@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form method="post">
+        @Html.LabelFor(model => model.Message)
+        <br />
+        @Html.EditorFor(model => model.Message)
+        <br />
+        <button type="submit">Broadcast</button>
+        <br />
+        @Html.DisplayFor(model => model.Status)
+    </form>
+</div>

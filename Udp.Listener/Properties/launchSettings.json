@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "Udp.Listener": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

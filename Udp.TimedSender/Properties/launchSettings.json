@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "Udp.TimedSender": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

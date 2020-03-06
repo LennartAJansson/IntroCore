@@ -1,0 +1,94 @@
+NUnit
+NSubstitute
+AutoFixture
+AutoNSubstitute
+https://github.com/AutoFixture/AutoFixture/wiki/Cheat-Sheet
+
+
+The reason for using HashSet in EF could be read here: https://stackoverflow.com/questions/11131617/using-hashset-in-entity-framework
+CQRS: https://nblumhardt.com/2016/08/context-and-correlation-structured-logging-concepts-in-net-5/
+Generic Host: https://www.tutorialdocs.com/article/dotnet-generic-host.html
+Health-checks: https://docs.microsoft.com/sv-se/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.0&WT.mc_id=dotnetconf-conference-shboyer
+Ternacode persistence: https://github.com/ternacode/ternacode-persistence
+
+NuGet: Microsoft.CodeAnalysis.FxCopAnalyzers
+https://marketplace.visualstudio.com/items?itemName=VisualStudioPlatformTeam.MicrosoftCodeAnalysis2019
+
+
+https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.0
+
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-3.0&tabs=visual-studio
+
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-3.0
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/index?view=aspnetcore-3.0
+
+https://blog.tedd.no/2019/05/07/net-core-console-application-ioc/
+
+https://stackoverflow.com/questions/51027443/mvc-core-dynamically-bind-configuration
+https://andrewlock.net/the-dangers-and-gotchas-of-using-scoped-services-when-configuring-options-in-asp-net-core/
+https://andrewlock.net/configuring-named-options-using-iconfigurenamedoptions-and-configureall/
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-2.2
+
+
+https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-8/
+
+
+MassTransit:
+    //https://masstransit-project.com/MassTransit/learn/samples/containers.html
+
+    //https://masstransit-project.com/MassTransit/quickstart.html
+
+    //TODO! Check Consumer -> Consume -> When(Event)
+    //https://masstransit-project.com/MassTransit/advanced/middleware/receive.html
+
+    //Circuit breaker:
+    //https://masstransit-project.com/MassTransit/advanced/middleware/circuit-breaker.html
+
+    //Versioning of messages:
+    //https://masstransit-project.com/MassTransit/advanced/versioning.html
+
+    //https://masstransit-project.com/MassTransit/advanced/topology/servicebus/topicsub.html
+    //Queue = One to one
+    //Subscription = One to many
+
+    //Message Entity:
+    //https://masstransit-project.com/MassTransit/advanced/topology/message.html
+
+    //Publish:
+    //Bus.Factory.CreateUsingAzureServiceBus(..., cfg =>
+    //{
+    //    cfg.Publish<OrderSubmitted>(x =>
+    //    {
+    //        x.EnablePartitioning = true;
+    //    });
+    //});
+
+    //Normal Send:
+    //Bus.Factory.CreateUsingAzureServiceBus(..., cfg =>
+    //{
+    //    cfg.Send<UpdateUserStatus>(x =>
+    //    {
+    //        x.UseCorrelationId(context => context.Message.OrderId);
+    //        x.UseSessionId(context => context.Message.OrderId);
+    //        x.UsePartitionKeyFormatter(context => context.Message.UserId);
+    //    });
+    //});
+
+    //Subscribe:
+    //https://masstransit-project.com/MassTransit/advanced/topology/servicebus/topicsub.html
+    //cfg.SubscriptionEndpoint<MessageType>(host, "subscription-name", e =>
+    //{
+    //    e.ConfigureConsumer<MyConsumer>(provider);
+    //})
+
+    //Transactions, IMPORTANT!!!
+    //https://masstransit-project.com/MassTransit/advanced/transactions.html
+
+    //cfg.ReceiveEndpoint(host, "submit-order", e =>
+    //{
+    //    e.UseConcurrencyLimit(4);
+
+    //    e.Consumer<SubmitOrderConsumer>();
+    //});

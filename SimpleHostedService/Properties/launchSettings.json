@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SimpleHostedService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
