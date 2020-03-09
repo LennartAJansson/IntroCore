@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "UsingHostApplicationLifeTime": {
+    "UsingIHostApplicationLifetime": {
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"

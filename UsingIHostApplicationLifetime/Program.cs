@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace UsingHostApplicationLifeTime
+namespace UsingIHostApplicationLifetime
 {
     static class Program
     {

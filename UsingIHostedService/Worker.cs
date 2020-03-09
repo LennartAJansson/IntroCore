@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using Microsoft.Extensions.Hosting;
 
-namespace UsingHostedService
+namespace UsingIHostedService
 {
     //Because we use a timer in the example we add IDisposable so we can Dispose of it afterwards
     internal class Worker : IHostedService, IDisposable

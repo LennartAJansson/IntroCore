@@ -1,4 +1,4 @@
-﻿namespace UsingHostApplicationLifeTime
+﻿namespace UsingIHostApplicationLifetime
 {
     internal class TimerSettings
     {
