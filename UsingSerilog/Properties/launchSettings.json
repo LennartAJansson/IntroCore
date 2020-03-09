@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "UsingSerilog": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

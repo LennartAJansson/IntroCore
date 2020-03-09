@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>UsingILogger-D4D0C921-6DB6-4A2C-B965-1C2AE508CC97</UserSecretsId>
+    <UserSecretsId>UsingIServiceProvider-CF2C0040-C1BB-4014-BDAB-F26ADCBA81F3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,9 +12,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="3.1.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.2" />
-
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,4 +22,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
 </Project>

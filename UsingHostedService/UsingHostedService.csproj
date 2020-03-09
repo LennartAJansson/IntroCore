@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>UsingIHostBuilder-06CD698B-AC5C-4DE9-8B81-F205BC92CF64</UserSecretsId>
+    <UserSecretsId>7de5eb1a-2ce0-4e76-863e-a8fabb3ecbb0</UserSecretsId>
+    <UserSecretsId>UsingHostedService-58A64A77-DC9E-4BB8-A2E6-2CD0BCD58ED9</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

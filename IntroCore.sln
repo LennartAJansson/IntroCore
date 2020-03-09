@@ -3,54 +3,97 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleHostedService", "SimpleHostedService\SimpleHostedService.csproj", "{D81E587A-AFE7-43F7-B8B2-6A6879D626AE}"
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Intro to NET Core Hosting", "00. Intro to NET Core Hosting", "{40D3F6DA-99F2-42B4-B0FF-A8AC472C96EA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06. Simple HostedService", "06. Simple HostedService", "{AD744FEB-BCB7-4531-90AF-AFF914C07052}"
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Using IConfiguration in ordinary console application", "01. Using IConfiguration in ordinary console application", "{C9208319-9052-4C2E-8D4A-6823F48AFC5C}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Using IServiceProvider in ordinary console application", "02. Using IServiceProvider in ordinary console application", "{A8E6504E-801F-4669-B954-59738659EF2D}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Using ILogger in ordinary console application", "03. Using ILogger in ordinary console application", "{F1F3D1A8-C939-451B-BC60-BD16F96EDD84}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Using IHostBuilder", "04. Using IHostBuilder", "{26F95D48-80C8-42BC-8050-74FAAF90DE67}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05. Using scopes", "05. Using scopes", "{9335C8C3-082D-4964-87DA-AA66BD74AE89}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05. Using IHost Extensions", "05. Using IHost Extensions", "{A850FD33-907B-49B1-AFF6-38722B08D0FE}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06. Using HostedService", "06. Using HostedService", "{AD744FEB-BCB7-4531-90AF-AFF914C07052}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07. Using BackgroundService", "07. Using BackgroundService", "{BAE1EE5B-6929-4F30-B3AF-5495037CE894}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08. Injecting config", "08. Injecting config", "{D1EE5F0B-14E5-4CCA-A145-F6C5D5BFD3E7}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09. Injecting Dynamic config", "09. Injecting Dynamic config", "{5AC58A21-1026-4907-9D96-6D0CFA24A700}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10. Using User Secrets", "10. Using User Secrets", "{13943DF1-4F5B-43FC-9C2E-FB39D10AAF13}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11. Using HostApplicationLifeTime", "11. Using HostApplicationLifeTime", "{3D002223-D8D8-44BB-A5DE-EEC9F39C9D40}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12. Serilog Logging", "12. Serilog Logging", "{FACD0CAC-5352-456B-A994-64621D31978D}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "13. Middleware of an UDP speaker and listener", "13. Middleware of an UDP speaker and listener", "{73F3B83B-6FBD-447B-BAAE-45553CC305F6}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "14. Create nuget packages", "14. Create nuget packages", "{51667AC0-1EFF-49FB-B356-F00A7D73C7B6}"
 	ProjectSection(SolutionItems) = preProject
-		HostedService.md = HostedService.md
+		azure-pipelines.yml = azure-pipelines.yml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleBackgroundService", "SimpleBackgroundService\SimpleBackgroundService.csproj", "{FAA23471-732C-46BE-A71E-CD6D02BEED70}"
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "15. Entity Framework", "15. Entity Framework", "{C0A2208B-370E-4903-947D-DB0F312E715B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07. Simple BackgroundService", "07. Simple BackgroundService", "{BAE1EE5B-6929-4F30-B3AF-5495037CE894}"
-	ProjectSection(SolutionItems) = preProject
-		BackgroundService.md = BackgroundService.md
-	EndProjectSection
-EndProject
+
+
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B51B6451-B76E-491A-9560-4382AB367023}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.git\config = .git\config
-		Notepad.txt = Notepad.txt
-		SetMultipleRemotes.ps1 = SetMultipleRemotes.ps1
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08. Injecting config", "08. Injecting config", "{D1EE5F0B-14E5-4CCA-A145-F6C5D5BFD3E7}"
-	ProjectSection(SolutionItems) = preProject
-		Configuration.md = Configuration.md
-	EndProjectSection
+
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingIHostBuilder", "UsingIHostBuilder\UsingIHostBuilder.csproj", "{7F01A7F2-9842-4975-8D8A-3BD2CD3BEB8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvancedBackgroundService", "AdvancedBackgroundService\AdvancedBackgroundService.csproj", "{AF72C81E-1440-4433-BF0A-8F1F04505CE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingILogger", "UsingILogger\UsingILogger.csproj", "{2932ABC4-D4D7-4629-AD47-6238DDD089E5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12. Serilog Logging", "12. Serilog Logging", "{FACD0CAC-5352-456B-A994-64621D31978D}"
-	ProjectSection(SolutionItems) = preProject
-		Serilog.md = Serilog.md
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingScopes", "UsingScopes\UsingScopes.csproj", "{45E336F0-F0B8-4591-BC81-2F3F3C1BD595}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntroducingConfigInjection", "IntroducingConfigInjection\IntroducingConfigInjection.csproj", "{382FE527-645C-4A51-B1ED-0D3C0A70A1BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingIHostExtensions", "UsingIHostExtensions\UsingIHostExtensions.csproj", "{7D2B9E8D-B3A9-4487-84C0-B7FC932F42C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11. Injecting HostApplicationLifeTime", "11. Injecting HostApplicationLifeTime", "{3D002223-D8D8-44BB-A5DE-EEC9F39C9D40}"
-	ProjectSection(SolutionItems) = preProject
-		HostApplicationLifetime.md = HostApplicationLifetime.md
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingDynamicConfigInjection", "UsingDynamicConfigInjection\UsingDynamicConfigInjection.csproj", "{45BB1878-52C9-46BC-A3C5-A343EBDD8069}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntroducingSerilog", "IntroducingSerilog\IntroducingSerilog.csproj", "{30A75905-E031-405C-AAF8-3F7EAF1804D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingUserSecrets", "UsingUserSecrets\UsingUserSecrets.csproj", "{E8A3FA18-D194-4BD9-8EC8-4F3312EFEE57}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "13. Middleware of an UDP speaker and listener", "13. Middleware of an UDP speaker and listener", "{73F3B83B-6FBD-447B-BAAE-45553CC305F6}"
-	ProjectSection(SolutionItems) = preProject
-		Middleware.md = Middleware.md
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingIConfiguration", "UsingIConfiguration\UsingIConfiguration.csproj", "{191D126D-E22F-40E4-98A8-03AE9E7ED4CE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingIServiceProvider", "UsingIServiceProvider\UsingIServiceProvider.csproj", "{C5099C1B-E6E2-4453-BEA9-D586AA80B843}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingHostedService", "UsingHostedService\UsingHostedService.csproj", "{D81E587A-AFE7-43F7-B8B2-6A6879D626AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingBackgroundService", "UsingBackgroundService\UsingBackgroundService.csproj", "{FAA23471-732C-46BE-A71E-CD6D02BEED70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingHostApplicationLifeTime", "UsingHostApplicationLifeTime\UsingHostApplicationLifeTime.csproj", "{AF72C81E-1440-4433-BF0A-8F1F04505CE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingConfigInjection", "UsingConfigInjection\UsingConfigInjection.csproj", "{382FE527-645C-4A51-B1ED-0D3C0A70A1BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingSerilog", "UsingSerilog\UsingSerilog.csproj", "{30A75905-E031-405C-AAF8-3F7EAF1804D7}"
+EndProject
+
+
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.Abstract", "Udp.Abstract\Udp.Abstract.csproj", "{4C6711D6-FDA9-4446-BB15-A6352E8BD637}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.Core", "Udp.Core\Udp.Core.csproj", "{0E9CDFC5-0962-4878-9FA6-B85DD14D159B}"
@@ -63,26 +106,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.TimedSender", "Udp.Time
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.WebSender", "Udp.WebSender\Udp.WebSender.csproj", "{A447CB91-78DC-4F54-BB7B-47244E8F23A9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Intro to different hosts", "00. Intro to different hosts", "{40D3F6DA-99F2-42B4-B0FF-A8AC472C96EA}"
-	ProjectSection(SolutionItems) = preProject
-		Hosts.md = Hosts.md
-		IntroCore.md = IntroCore.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "14. Create nuget packages", "14. Create nuget packages", "{51667AC0-1EFF-49FB-B356-F00A7D73C7B6}"
-	ProjectSection(SolutionItems) = preProject
-		Artifact.md = Artifact.md
-		azure-pipelines.yml = azure-pipelines.yml
-		Nuget.md = Nuget.md
-		NuGetBuild.md = NuGetBuild.md
-		NuGetDeploy.md = NuGetDeploy.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "15. Entity Framework", "15. Entity Framework", "{C0A2208B-370E-4903-947D-DB0F312E715B}"
-	ProjectSection(SolutionItems) = preProject
-		EFCore.md = EFCore.md
-	EndProjectSection
-EndProject
+
+
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiEF", "WebApiEF\WebApiEF.csproj", "{E7D6F582-3CA6-4247-8D22-707104170F37}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiEF.Db", "WebApiEF.Db\WebApiEF.Db.csproj", "{70C8A142-9BC1-4D63-8B10-3357B638C09A}"
@@ -95,43 +120,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiEF.Db.Model", "WebApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiEFDbSeeder", "WebApiEFDbSeeder\WebApiEFDbSeeder.csproj", "{047127C9-8F7C-4DEF-B5D2-7A1B4B8D222A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09. Injecting Dynamic config", "09. Injecting Dynamic config", "{5AC58A21-1026-4907-9D96-6D0CFA24A700}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicConfigInjection", "DynamicConfigInjection\DynamicConfigInjection.csproj", "{45BB1878-52C9-46BC-A3C5-A343EBDD8069}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10. Using User Secrets", "10. Using User Secrets", "{13943DF1-4F5B-43FC-9C2E-FB39D10AAF13}"
-	ProjectSection(SolutionItems) = preProject
-		UserSecrets.md = UserSecrets.md
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntroducingUserSecrets", "IntroducingUserSecrets\IntroducingUserSecrets.csproj", "{E8A3FA18-D194-4BD9-8EC8-4F3312EFEE57}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Adding IConfiguration to ordinary console application", "01. Adding IConfiguration to ordinary console application", "{C9208319-9052-4C2E-8D4A-6823F48AFC5C}"
-	ProjectSection(SolutionItems) = preProject
-		UsingIConfiguration.md = UsingIConfiguration.md
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlyIConfiguration", "OnlyIConfiguration\OnlyIConfiguration.csproj", "{191D126D-E22F-40E4-98A8-03AE9E7ED4CE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlyIServiceProvider", "OnlyIServiceProvider\OnlyIServiceProvider.csproj", "{C5099C1B-E6E2-4453-BEA9-D586AA80B843}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Adding IServiceProvider to ordinary console application", "02. Adding IServiceProvider to ordinary console application", "{A8E6504E-801F-4669-B954-59738659EF2D}"
-	ProjectSection(SolutionItems) = preProject
-		UsingIServiceProvider.md = UsingIServiceProvider.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05. Using IHostBuilder", "05. Using IHostBuilder", "{26F95D48-80C8-42BC-8050-74FAAF90DE67}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingIHostBuilder", "UsingIHostBuilder\UsingIHostBuilder.csproj", "{7F01A7F2-9842-4975-8D8A-3BD2CD3BEB8B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Adding ILogger to ordinary console application", "03. Adding ILogger to ordinary console application", "{F1F3D1A8-C939-451B-BC60-BD16F96EDD84}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingILogger", "UsingILogger\UsingILogger.csproj", "{2932ABC4-D4D7-4629-AD47-6238DDD089E5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Using scopes", "04. Using scopes", "{9335C8C3-082D-4964-87DA-AA66BD74AE89}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingScopes", "UsingScopes\UsingScopes.csproj", "{45E336F0-F0B8-4591-BC81-2F3F3C1BD595}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -234,6 +223,10 @@ Global
 		{45E336F0-F0B8-4591-BC81-2F3F3C1BD595}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45E336F0-F0B8-4591-BC81-2F3F3C1BD595}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45E336F0-F0B8-4591-BC81-2F3F3C1BD595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2B9E8D-B3A9-4487-84C0-B7FC932F42C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2B9E8D-B3A9-4487-84C0-B7FC932F42C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2B9E8D-B3A9-4487-84C0-B7FC932F42C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2B9E8D-B3A9-4487-84C0-B7FC932F42C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -263,6 +256,7 @@ Global
 		{7F01A7F2-9842-4975-8D8A-3BD2CD3BEB8B} = {26F95D48-80C8-42BC-8050-74FAAF90DE67}
 		{2932ABC4-D4D7-4629-AD47-6238DDD089E5} = {F1F3D1A8-C939-451B-BC60-BD16F96EDD84}
 		{45E336F0-F0B8-4591-BC81-2F3F3C1BD595} = {9335C8C3-082D-4964-87DA-AA66BD74AE89}
+		{7D2B9E8D-B3A9-4487-84C0-B7FC932F42C2} = {A850FD33-907B-49B1-AFF6-38722B08D0FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F54D424-7C39-48F1-B8C1-EC5A9683461A}

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "UsingIServiceProvider": {
+      "commandName": "Project",
+      "commandLineArgs": "CmdGroup:CmdValue=\"This is a value from commandline\"",
+      "environmentVariables": {
+        "EnvGroup__EnvValue": "This is a value from environment"
+      }
+    }
+  }
+}

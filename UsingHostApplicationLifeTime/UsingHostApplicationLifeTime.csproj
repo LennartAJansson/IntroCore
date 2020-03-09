@@ -1,9 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>UsingIHostBuilder-06CD698B-AC5C-4DE9-8B81-F205BC92CF64</UserSecretsId>
+    <UserSecretsId>UsingHostApplicationLifeTime-17107d68-5e11-47c2-b86c-735a3bf30af2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
