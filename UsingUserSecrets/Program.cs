@@ -22,8 +22,7 @@ namespace UsingUserSecrets
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host
-                .CreateDefaultBuilder(args)
+            Host.CreateDefaultBuilder(args)
                 //In previous versions we needed to use following configuration, now we only need to add the reference
                 //.ConfigureAppConfiguration(config =>
                 //    config.AddUserSecrets<Program>(optional: true))

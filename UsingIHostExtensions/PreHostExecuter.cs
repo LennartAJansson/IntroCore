@@ -2,15 +2,15 @@
 
 namespace UsingIHostExtensions
 {
-    public class MyClass
+    public class PreHostExecuter
     {
-        private readonly ILogger<MyClass> logger;
+        private readonly ILogger<PreHostExecuter> logger;
 
-        public MyClass(ILogger<MyClass> logger)
+        public PreHostExecuter(ILogger<PreHostExecuter> logger)
         {
             this.logger = logger;
         }
-        public void DoUpgrade()
+        public void Run()
         {
             logger.LogInformation("Upgrading...");
         }

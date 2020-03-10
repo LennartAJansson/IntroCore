@@ -5,10 +5,10 @@ namespace UsingIHostExtensions
 {
     public static class HostExtensions
     {
-        public static IHost DoSomethingBeforeRun(this IHost host)
+        public static IHost PreHostRun(this IHost host)
         {
-            var svc = host.Services.GetRequiredService<MyClass>();
-            svc.DoUpgrade();
+            var svc = host.Services.GetRequiredService<PreHostExecuter>();
+            svc.Run();
             return host;
         }
     }

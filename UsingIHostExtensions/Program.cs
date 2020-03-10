@@ -9,7 +9,7 @@ namespace UsingIHostExtensions
         {
             CreateHostBuilder(args)
                 .Build()
-                .DoSomethingBeforeRun()
+                .PreHostRun()
                 .Run();
         }
 
@@ -17,7 +17,7 @@ namespace UsingIHostExtensions
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddTransient<MyClass>();
+                    services.AddTransient<PreHostExecuter>();
                     services.AddHostedService<Worker>();
                 });
     }
