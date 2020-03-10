@@ -2,11 +2,13 @@
 
 NET Core 3.x Extensions library has been heavily refactored since versions 2.x and this documents is for all of you that have used the older versions but also if you haven't been in contact with NET Core before. 
 
-In this series of documents I will describe the basics of the building blocks included in NET Core Extensions so you will get up to speed using them.
+In this series of documents I will describe the basics of some of the building blocks included in NET Core Extensions to get you up to speed using them.
 
+* Explain Builder pattern
+* Explain Factory pattern
+* Explain factory delegate overload
 
-
-1. [Using IConfiguration from a Console application](UsingIConfiguration.md)
+1. [Using IConfiguration from a Console application](UsingIConfiguration.md) (done)
 2. [Using IServiceProvider from a Console application](UsingIServiceProvider.md)
 3. [Using ILogger from a Console application](UsingILogger.md)
 4. [Using IHostBuilder](UsingIHostBuilder.md)

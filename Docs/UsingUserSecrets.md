@@ -2,7 +2,7 @@
 
 ## Using User Secrets
 
-User Secrets lets you store sensitive configuration information in a protected location outside of your version control. The physical path for the file is "%appdata%\Microsoft\UserSecrets\" plus the value of the xml element UserSecretsId in your projectfile. Inside that folder there will be a file named secrets.json.
+User Secrets lets you store sensitive configuration information in a protected location outside of your version control and under your user profile. The physical path for the configuration file is "%appdata%\Microsoft\UserSecrets\" plus the value of the xml element UserSecretsId in your projectfile. Inside that folder there will be a file named secrets.json and it follows standard json configuration format.
 
 To enable the use of UserSecrets you start off by adding a reference to the extension Nuget for it.
 
