@@ -13,7 +13,7 @@ namespace Microsoft.Extensions.Hosting
 {
     public static class DbInjections
     {
-        public static readonly string defaultConnectionString = "Server=(localdb)\\mssqllocaldb;Database=Workloads;Trusted_Connection=True;MultipleActiveResultSets=true";
+        public static readonly string defaultConnectionString = "Server=(localdb)\\mssqllocaldb;Database=WorkloadsIntro;Trusted_Connection=True;MultipleActiveResultSets=true";
 
         //This extension is for IHostBuilder so you could add db support on this level
         public static IHostBuilder AddWorkloadDb(this IHostBuilder hostBuilder, Func<IConfiguration, string> GetConnectionString = null)

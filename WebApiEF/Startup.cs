@@ -32,19 +32,7 @@ namespace WebApiEF
                     {
                         Title = "WebApiEF",
                         Version = "v1",
-                        Description = "A simple example ASP.NET Core Web API with Entity Framework Core DB",
-                        //TermsOfService = new Uri("URI to your TOS"),
-                        //Contact = new OpenApiContact
-                        //{
-                        //    Name = "Name of contact",
-                        //    Email = "Email to contact",
-                        //    Url = new Uri("URI to contact"),
-                        //},
-                        //License = new OpenApiLicense
-                        //{
-                        //    Name = "License name",
-                        //    Url = new Uri("License URI"),
-                        //}
+                        Description = "A simple example ASP.NET Core Web API with Entity Framework Core DB"
                     }));
         }
 

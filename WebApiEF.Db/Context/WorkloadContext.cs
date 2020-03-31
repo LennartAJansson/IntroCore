@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-
 using WebApiEF.Db.Abstract;
 using WebApiEF.Db.Model;
 
@@ -28,7 +27,7 @@ namespace WebApiEF.Db.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Workloads;Trusted_Connection=True;MultipleActiveResultSets=true");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=WorkloadsIntro;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
 
             //Assign the LoggerFactory for the DbContext
