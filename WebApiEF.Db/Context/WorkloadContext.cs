@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+
 using WebApiEF.Db.Abstract;
 using WebApiEF.Db.Model;
 
@@ -41,5 +42,20 @@ namespace WebApiEF.Db.Context
             //modelBuilder.Entity<Person>().HasMany(s => s.Workloads).WithOne(s => s.Person);
             //modelBuilder.Entity<Person>().Property("City").HasMaxLength(20);
         }
+
+        //public override int SaveChanges()
+        //{
+        //    var changedEntriesCopy = this.ChangeTracker.Entries()
+        //        .Where(e => e.State == EntityState.Added ||
+        //                    e.State == EntityState.Modified ||
+        //                    e.State == EntityState.Deleted)
+        //        .ToList();
+
+        //    foreach (var item in changedEntriesCopy)
+        //    {
+        //    }
+
+        //    return base.SaveChanges();
+        //}
     }
 }
