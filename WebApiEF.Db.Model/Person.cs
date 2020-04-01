@@ -11,6 +11,7 @@ namespace WebApiEF.Db.Model
         public string Postalcode { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }
+        //Browsing property, används endast i programmet och har ingen motsvarighet i databasen
         public virtual ICollection<Workload> Workloads { get; set; } = new HashSet<Workload>();
     }
 }

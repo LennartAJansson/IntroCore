@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using WebApiEF.Db.Context;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+using WebApiEF.Db.Abstract;
 using WebApiEF.Db.Model;
 
 namespace WebApiEF.Controllers
@@ -16,21 +16,21 @@ namespace WebApiEF.Controllers
     [ApiController]
     public class WorkloadsNewController : ControllerBase
     {
-        private readonly WorkloadContext context;
+        private readonly IWorkloadService service;
 
-        public WorkloadsNewController(WorkloadContext context) => this.context = context;
+        public WorkloadsNewController(IWorkloadService service) => this.service = service;
 
         // GET: api/WorkloadsNew
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Workload>>> GetWorkloads() => await context.Workloads.ToListAsync();
+        public async Task<IEnumerable<Workload>> GetWorkloads() => await service.GetUnfinishedWorkloadsAsync(0, 0);
 
         // GET: api/WorkloadsNew/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Workload>> GetWorkload(int id)
         {
-            var workload = await context.Workloads.FindAsync(id);
-
+            var workloads = await service.GetUnfinishedWorkloadsAsync(0, 0);
+            var workload = workloads.Where(x => x.WorkloadId == id).FirstOrDefault();
             if (workload == null)
             {
                 return NotFound();
@@ -50,23 +50,7 @@ namespace WebApiEF.Controllers
                 return BadRequest();
             }
 
-            context.Entry(workload).State = EntityState.Modified;
-
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!WorkloadExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await service.StopWorkloadAsync(id, DateTimeOffset.UtcNow);
 
             return NoContent();
         }
@@ -77,28 +61,9 @@ namespace WebApiEF.Controllers
         [HttpPost]
         public async Task<ActionResult<Workload>> PostWorkload(Workload workload)
         {
-            context.Workloads.Add(workload);
-            await context.SaveChangesAsync();
+            int i = await service.StartWorkloadAsync(workload.PersonId, workload.AssignmentId, workload.Comment, DateTimeOffset.UtcNow);
 
-            return CreatedAtAction("GetWorkload", new { id = workload.WorkloadId }, workload);
+            return CreatedAtAction("GetWorkload", new { id = i }, workload);
         }
-
-        // DELETE: api/WorkloadsNew/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Workload>> DeleteWorkload(int id)
-        {
-            var workload = await context.Workloads.FindAsync(id);
-            if (workload == null)
-            {
-                return NotFound();
-            }
-
-            context.Workloads.Remove(workload);
-            await context.SaveChangesAsync();
-
-            return workload;
-        }
-
-        private bool WorkloadExists(int id) => context.Workloads.Any(e => e.WorkloadId == id);
     }
 }
