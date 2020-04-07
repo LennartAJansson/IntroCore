@@ -10,7 +10,7 @@ using WebApiEF.Db.Context;
 namespace WebApiEF.Db.Migrations
 {
     [DbContext(typeof(WorkloadContext))]
-    [Migration("20200330114642_Initial")]
+    [Migration("20200403090340_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

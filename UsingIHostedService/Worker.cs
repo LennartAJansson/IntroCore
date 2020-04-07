@@ -11,8 +11,7 @@ namespace UsingIHostedService
     {
         private Timer timer;
 
-        public Worker() =>
-            Console.WriteLine("Constructing Service");
+        public Worker() => Console.WriteLine("Constructing Service");
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -42,6 +41,5 @@ namespace UsingIHostedService
         //Using DateTimeOffset instead of DateTime to get UTC time
         private void DoWork(object state) =>
             Console.WriteLine($"{DateTimeOffset.Now} - Doing work");
-
     }
 }

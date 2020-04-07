@@ -15,11 +15,11 @@ namespace UsingConfigInjection
         private readonly ILogger<Worker> logger;
         private readonly TimerSettings timerSettings;
 
-        public Worker(ILogger<Worker> logger, IOptionsMonitor<TimerSettings> timerOptions)
+        public Worker(ILogger<Worker> logger, IOptions<TimerSettings> timerOptions)
             : base()
         {
             this.logger = logger;
-            timerSettings = timerOptions.CurrentValue;
+            timerSettings = timerOptions.Value;
             this.logger.LogInformation("Constructing Service");
         }
 

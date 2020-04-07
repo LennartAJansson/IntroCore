@@ -8,7 +8,7 @@ namespace UsingILogger
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -17,13 +17,14 @@ namespace UsingILogger
                 .AddCommandLine(args)
                 .Build();
 
-            var serviceProvider = new ServiceCollection()
+            var spBuilder = new ServiceCollection()
                 .AddLogging(loggingBuilder =>
                     loggingBuilder.AddConsole())
                 .AddScoped<DIUserClass>()
                 .AddScoped<ITestService, TestService>()
-                .AddSingleton<IConfiguration>(configuration)
-                .BuildServiceProvider();
+                .AddSingleton<IConfiguration>(configuration);
+
+            var serviceProvider = spBuilder.BuildServiceProvider();
 
             Console.WriteLine("You now have access to a complete IServiceProvider (IOC) through variable serviceProvider");
 
@@ -32,7 +33,7 @@ namespace UsingILogger
                 .RunAsync()
                 .GetAwaiter();
 
-            //Needed to let the ILogger flush its content before main thread exits. 
+            //Needed to let the ILogger flush its content before main thread exits.
             //It will dispose all object created by the ServiceProvider, ILogger fx
 
             serviceProvider.Dispose();

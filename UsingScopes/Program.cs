@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace UsingScopes
 {
-    class Program
+    internal class Program
     {
         //On line 49, alter the registration of InjectedService between AddScoped and AddTransient and run the application
         //The output will show if the InjectedService object is recreated between MyMainService and MySecondService or not
@@ -46,8 +46,8 @@ namespace UsingScopes
                     services.AddScoped<MyMainService>();
                     services.AddScoped<MySecondService>();
                     //TODO! Alter this between AddScoped and AddTransient and observe the difference in how it gets created in this example
-                    services.AddScoped<InjectedService>();
-                    //services.AddTransient<InjectedService>();
+                    //services.AddScoped<InjectedService>();
+                    services.AddTransient<InjectedService>();
                 });
     }
 

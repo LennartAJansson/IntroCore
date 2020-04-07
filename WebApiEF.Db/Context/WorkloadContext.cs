@@ -51,9 +51,7 @@ namespace WebApiEF.Db.Context
         //                    e.State == EntityState.Deleted)
         //        .ToList();
 
-        //    foreach (var item in changedEntriesCopy)
-        //    {
-        //    }
+        // foreach (var item in changedEntriesCopy) { }
 
         //    return base.SaveChanges();
         //}

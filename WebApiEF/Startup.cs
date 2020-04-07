@@ -24,7 +24,6 @@ namespace WebApiEF
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-
             //Add a swagger generator
             services.AddSwaggerGen(options =>
                     options.SwaggerDoc("v1", new OpenApiInfo

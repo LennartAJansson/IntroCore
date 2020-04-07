@@ -4,9 +4,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace UsingIConfiguration
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             IConfiguration configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
