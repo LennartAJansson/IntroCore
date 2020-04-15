@@ -5,7 +5,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace UsingIServiceProvider
 {
-    class DIUserClass
+
+    public interface IDIUserClass
+    {
+        Task RunAsync();
+    }
+
+    class DIUserClass : IDIUserClass
     {
         private readonly ITestService testService;
         private readonly IConfiguration configuration;

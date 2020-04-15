@@ -17,7 +17,7 @@ namespace UsingIServiceProvider
                 .Build();
 
             var serviceProvider = new ServiceCollection()
-                .AddScoped<DIUserClass>()
+                .AddScoped<IDIUserClass, DIUserClass>()
                 .AddScoped<ITestService, TestService>()
                 .AddSingleton<IConfiguration>(configuration)
                 .BuildServiceProvider();
@@ -25,7 +25,7 @@ namespace UsingIServiceProvider
             Console.WriteLine("You now have access to a complete IServiceProvider (IOC) through variable serviceProvider");
 
             serviceProvider
-                .GetService<DIUserClass>()
+                .GetService<IDIUserClass>()
                 .RunAsync()
                 .GetAwaiter();
         }

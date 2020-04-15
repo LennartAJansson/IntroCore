@@ -9,6 +9,7 @@ namespace UsingIHostBuilder
         public MyClass(ILogger<MyClass> logger)
         {
             this.logger = logger;
+            this.logger.LogInformation("Creating MyClass");
         }
     }
 }
