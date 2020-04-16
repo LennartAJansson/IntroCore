@@ -56,6 +56,6 @@ namespace UsingConfigInjection
         }
 
         private void DoWork(object state) =>
-            logger.LogInformation("DoWork");
+            logger.LogInformation($"{DateTimeOffset.Now} - Doing work");
     }
 }
