@@ -18,6 +18,8 @@ namespace UsingScopes
             var host = CreateHostBuilder(args).Build();
 
             //Using the ServiceProvider we can create our own intermediate scope
+            //If anything is created with AddScoped within this scope then it will be shared between all
+            //If anything is created with AddTransient within this scope then it will be a new unique instance for all
             using (var serviceScope = host.Services.CreateScope())
             {
                 var services = serviceScope.ServiceProvider;
@@ -28,6 +30,8 @@ namespace UsingScopes
                     //scopedService will only live through this scope
                     var scopedService = services.GetRequiredService<MyMainService>();
                     await scopedService.RunAsync();
+                    var secondService = services.GetRequiredService<MyThirdService>();
+                    await secondService.RunAsync();
                 }
                 catch (Exception ex)
                 {
@@ -45,9 +49,10 @@ namespace UsingScopes
                 {
                     services.AddScoped<MyMainService>();
                     services.AddScoped<MySecondService>();
+                    services.AddScoped<MyThirdService>();
                     //TODO! Alter this between AddScoped and AddTransient and observe the difference in how it gets created in this example
-                    //services.AddScoped<InjectedService>();
-                    services.AddTransient<InjectedService>();
+                    services.AddScoped<InjectedService>();
+                    //services.AddTransient<InjectedService>();
                 });
     }
 
@@ -87,6 +92,25 @@ namespace UsingScopes
         public Task RunAsync()
         {
             logger.LogInformation($"In MySecondService, Injected service id: {injectedService.Id.ToString()}");
+            return Task.CompletedTask;
+        }
+    }
+
+    internal class MyThirdService
+    {
+        private readonly ILogger<MyThirdService> logger;
+        private readonly InjectedService injectedService;
+
+        //We inject our second InjectedService here
+        public MyThirdService(ILogger<MyThirdService> logger, InjectedService injectedService)
+        {
+            this.logger = logger;
+            this.injectedService = injectedService;
+        }
+
+        public Task RunAsync()
+        {
+            logger.LogInformation($"In MyThirdService, Injected service id: {injectedService.Id.ToString()}");
             return Task.CompletedTask;
         }
     }
