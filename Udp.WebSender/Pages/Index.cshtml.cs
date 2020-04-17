@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
@@ -23,10 +22,15 @@ namespace Udp.WebSender.Pages
         public IndexModel(ILogger<IndexModel> logger, IUdpSpeakerService speaker)
         {
             this.logger = logger;
+            this.logger.LogInformation("Constructing index page...");
             this.speaker = speaker;
         }
 
-        public IActionResult OnGet() => Page();
+        public IActionResult OnGet()
+        {
+            logger.LogInformation("Getting index page...");
+            return Page();
+        }
 
         public IActionResult OnPost()
         {

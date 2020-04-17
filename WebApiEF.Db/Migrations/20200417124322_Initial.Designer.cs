@@ -10,14 +10,14 @@ using WebApiEF.Db.Context;
 namespace WebApiEF.Db.Migrations
 {
     [DbContext(typeof(WorkloadContext))]
-    [Migration("20200403090340_Initial")]
+    [Migration("20200417124322_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
