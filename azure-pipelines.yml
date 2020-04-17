@@ -39,8 +39,17 @@ steps:
   inputs:
     Contents: '**/bin/$(buildConfiguration)/**/*.nupkg'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    flattenFolders: true
 
-#Om något kopierats till ArtifactStagingDirectory så publicera detta till droplocation
+#Om bygget innehåller Nuget paket så pusha dessa till nuget feed
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '738eaab2-7fa4-48f8-9a04-a44cd8830cf9/f23b5e21-2094-4cf5-829c-51e3752ec779'
+
+#Om något kopierats till ArtifactStagingDirectory så publicera även detta till droplocation
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
