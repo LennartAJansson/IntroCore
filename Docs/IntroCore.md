@@ -23,4 +23,3 @@ In this series of documents I will describe the basics of some of the building b
 13. [Using Serilog Logging](UsingSerilog.md)
 14. UDP Sample
 15. Creating Nuget packages
-16. Entity Framework Core
