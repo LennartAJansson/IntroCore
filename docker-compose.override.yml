@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  udp.websender:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "8081:80"
+      - "8443:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${LOCALAPPDATA}/ASP.NET/DataProtection-Keys:/root/.aspnet/DataProtection-Keys:rw
+      - ${SystemDrive}/Data/SQLite:/sqlitedata:rw
+  udp.listener:
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  udp.timedsender:
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+  nats:
+    ports:
+      - "4002:4222"
+      - "8002:8222"

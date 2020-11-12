@@ -11,7 +11,10 @@ namespace UsingBackgroundService
         private static IHostBuilder CreateHostBuilder(string[] args)
         {
             var host = Host.CreateDefaultBuilder(args);
-            host.ConfigureServices((hostContext, services) => services.AddHostedService<Worker>());
+            host.ConfigureServices((hostContext, services) =>
+            {
+                services.AddHostedService<Worker>();
+            });
             return host;
         }
     }

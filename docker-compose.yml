@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  udp.websender:
+    image: ${DOCKER_REGISTRY-}udpwebsender
+    build:
+      context: .
+      dockerfile: Udp.WebSender/Dockerfile
+
+  udp.listener:
+    image: ${DOCKER_REGISTRY-}udplistener
+    build:
+      context: .
+      dockerfile: Udp.Listener/Dockerfile
+
+  udp.timedsender:
+    image: ${DOCKER_REGISTRY-}udptimedsender
+    build:
+      context: .
+      dockerfile: Udp.TimedSender/Dockerfile
+
+  nats:
+    container_name: natsstreaming
+    hostname: natsstreaming
+    image: nats-streaming
+
