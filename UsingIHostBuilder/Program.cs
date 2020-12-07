@@ -13,9 +13,6 @@ namespace UsingIHostBuilder
 
         private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.AddScoped<MyClass>();
-                });
+                .ConfigureServices(services => services.AddScoped<MyClass>());
     }
 }

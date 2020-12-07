@@ -18,9 +18,3 @@ services:
     build:
       context: .
       dockerfile: Udp.TimedSender/Dockerfile
-
-  nats:
-    container_name: natsstreaming
-    hostname: natsstreaming
-    image: nats-streaming
-

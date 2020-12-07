@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace UsingBackgroundService
 {
-    static class Program
+    internal static class Program
     {
         private static void Main(string[] args) =>
             CreateHostBuilder(args).Build().Run();
@@ -11,10 +11,7 @@ namespace UsingBackgroundService
         private static IHostBuilder CreateHostBuilder(string[] args)
         {
             var host = Host.CreateDefaultBuilder(args);
-            host.ConfigureServices((hostContext, services) =>
-            {
-                services.AddHostedService<Worker>();
-            });
+            host.ConfigureServices(services => services.AddHostedService<Worker>());
             return host;
         }
     }
