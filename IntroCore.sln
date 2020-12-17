@@ -87,6 +87,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.WebSender", "Udp.WebSen
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DA3C6E6E-C7B8-4934-BEF5-780D8E7B1E38}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "16. Furthermore...", "16. Furthermore...", "{78E4F627-BD03-4A0A-BFAF-EC4A847384CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingKeyVault", "UsingKeyVault\UsingKeyVault.csproj", "{E480B394-7A9D-495A-A0CE-71D9450BD345}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -173,6 +177,10 @@ Global
 		{DA3C6E6E-C7B8-4934-BEF5-780D8E7B1E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA3C6E6E-C7B8-4934-BEF5-780D8E7B1E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA3C6E6E-C7B8-4934-BEF5-780D8E7B1E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E480B394-7A9D-495A-A0CE-71D9450BD345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E480B394-7A9D-495A-A0CE-71D9450BD345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E480B394-7A9D-495A-A0CE-71D9450BD345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E480B394-7A9D-495A-A0CE-71D9450BD345}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -197,6 +205,7 @@ Global
 		{66B1D00A-7FF4-4D47-B65E-4428ACE5ED74} = {73F3B83B-6FBD-447B-BAAE-45553CC305F6}
 		{73500512-B840-4FFA-BCF2-C33AEBDB7546} = {73F3B83B-6FBD-447B-BAAE-45553CC305F6}
 		{A447CB91-78DC-4F54-BB7B-47244E8F23A9} = {73F3B83B-6FBD-447B-BAAE-45553CC305F6}
+		{E480B394-7A9D-495A-A0CE-71D9450BD345} = {78E4F627-BD03-4A0A-BFAF-EC4A847384CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F54D424-7C39-48F1-B8C1-EC5A9683461A}
