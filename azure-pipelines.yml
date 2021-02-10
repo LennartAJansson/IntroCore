@@ -18,7 +18,7 @@ steps:
   displayName: 'Use .Net Core sdk 3.1.x'
   inputs:
     packageType: 'sdk'
-    version: '5.0'
+    version: '5.0.x'
 
 #Kompilera hela repot
 - task: DotNetCoreCLI@2
