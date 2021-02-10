@@ -85,10 +85,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.TimedSender", "Udp.Time
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.WebSender", "Udp.WebSender\Udp.WebSender.csproj", "{A447CB91-78DC-4F54-BB7B-47244E8F23A9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "16. Furthermore...", "16. Furthermore...", "{78E4F627-BD03-4A0A-BFAF-EC4A847384CD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingKeyVault", "UsingKeyVault\UsingKeyVault.csproj", "{E480B394-7A9D-495A-A0CE-71D9450BD345}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,10 +167,6 @@ Global
 		{A447CB91-78DC-4F54-BB7B-47244E8F23A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A447CB91-78DC-4F54-BB7B-47244E8F23A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A447CB91-78DC-4F54-BB7B-47244E8F23A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E480B394-7A9D-495A-A0CE-71D9450BD345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E480B394-7A9D-495A-A0CE-71D9450BD345}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E480B394-7A9D-495A-A0CE-71D9450BD345}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E480B394-7A9D-495A-A0CE-71D9450BD345}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,7 +191,6 @@ Global
 		{66B1D00A-7FF4-4D47-B65E-4428ACE5ED74} = {73F3B83B-6FBD-447B-BAAE-45553CC305F6}
 		{73500512-B840-4FFA-BCF2-C33AEBDB7546} = {73F3B83B-6FBD-447B-BAAE-45553CC305F6}
 		{A447CB91-78DC-4F54-BB7B-47244E8F23A9} = {73F3B83B-6FBD-447B-BAAE-45553CC305F6}
-		{E480B394-7A9D-495A-A0CE-71D9450BD345} = {78E4F627-BD03-4A0A-BFAF-EC4A847384CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F54D424-7C39-48F1-B8C1-EC5A9683461A}
