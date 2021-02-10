@@ -13,10 +13,11 @@ namespace UsingDynamicConfigInjection
         private Timer timer;
 
         private readonly ILogger<Worker> logger;
+
         //https://docs.microsoft.com/en-gb/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1
         //https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples/3.x/OptionsSample
         //
-        //If you test this functionality then remember that if you execute in debug you will have to change the appsettings.json 
+        //If you test this functionality then remember that if you execute in debug you will have to change the appsettings.json
         //located in the main project folder, NOT the one that is copied to the build output!
         //
 

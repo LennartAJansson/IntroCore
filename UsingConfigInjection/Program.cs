@@ -13,8 +13,6 @@ namespace UsingConfigInjection
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddOptions();
-
                     services.Configure<TimerSettings>(options =>
                         hostContext.Configuration.GetSection("TimerSettings").Bind(options));
 

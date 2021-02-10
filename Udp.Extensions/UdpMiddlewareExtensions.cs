@@ -14,8 +14,6 @@ namespace Udp.Extensions
         {
             hostBuilder.ConfigureServices((hostBuilderContext, serviceCollection) =>
             {
-                serviceCollection.AddOptions();
-
                 serviceCollection.Configure<UdpListenerConfig>(options =>
                     hostBuilderContext.Configuration.GetSection(configGroup).Bind(options));
 
@@ -29,8 +27,6 @@ namespace Udp.Extensions
         {
             hostBuilder.ConfigureServices((hostBuilderContext, serviceCollection) =>
             {
-                serviceCollection.AddOptions();
-
                 serviceCollection.Configure<UdpSpeakerConfig>(options =>
                     hostBuilderContext.Configuration.GetSection(configGroup).Bind(options));
 
@@ -42,8 +38,6 @@ namespace Udp.Extensions
 
         public static IServiceCollection AddUdpSpeaker(this IServiceCollection serviceCollection, IConfiguration configuration, string configGroup)
         {
-            serviceCollection.AddOptions();
-
             serviceCollection.Configure<UdpSpeakerConfig>(options =>
                 configuration.GetSection(configGroup).Bind(options));
 

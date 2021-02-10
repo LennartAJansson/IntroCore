@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Udp.TimedSender": {
+    "UsingILogger": {
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"

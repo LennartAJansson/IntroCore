@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace UsingIHostApplicationLifetime
 {
-    static class Program
+    internal static class Program
     {
         private static void Main(string[] args) =>
             CreateHostBuilder(args).Build().Run();
@@ -13,8 +13,6 @@ namespace UsingIHostApplicationLifetime
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddOptions();
-
                     services.Configure<TimerSettings>(options =>
                         hostContext.Configuration.GetSection("TimerSettings").Bind(options));
 

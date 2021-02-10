@@ -10,8 +10,6 @@ namespace Udp.TimedSender.Extensions
         {
             hostBuilder.ConfigureServices((hostBuilderContext, serviceCollection) =>
             {
-                serviceCollection.AddOptions();
-
                 serviceCollection.Configure<TimerSettings>(options =>
                     hostBuilderContext.Configuration.GetSection(configGroup).Bind(options));
             });
