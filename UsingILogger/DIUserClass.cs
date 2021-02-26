@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+
+using System.Threading.Tasks;
 
 namespace UsingILogger
 {
-    class DIUserClass
+    internal class DIUserClass
     {
         private readonly ITestService testService;
         private readonly IConfiguration configuration;
@@ -20,9 +20,9 @@ namespace UsingILogger
 
         public async Task RunAsync()
         {
-            logger.LogInformation("DIUserClass.RunAsync...");
-            logger.LogInformation($"  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
-            logger.LogInformation($"  {configuration.GetSection("DevelopmentGroup")["DevelopmentValue"]}");
+            logger.LogTrace("DIUserClass.RunAsync...");
+            logger.LogTrace($"  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
+            logger.LogTrace($"  {configuration.GetSection("DevelopmentGroup")["DevelopmentValue"]}");
 
             await testService.ExecuteAsync();
         }

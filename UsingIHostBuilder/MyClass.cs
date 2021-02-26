@@ -11,5 +11,10 @@ namespace UsingIHostBuilder
             this.logger = logger;
             this.logger.LogInformation("Creating MyClass");
         }
+
+        public void Execute()
+        {
+            logger.LogInformation("In MyClass.Execute...");
+        }
     }
 }

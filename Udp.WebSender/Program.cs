@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Udp.WebSender
 {
-    static class Program
+    internal static class Program
     {
         private static void Main(string[] args) =>
              CreateHostBuilder(args).Build().Run();

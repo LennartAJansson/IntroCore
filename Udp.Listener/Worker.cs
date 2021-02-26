@@ -22,25 +22,24 @@ namespace Udp.Listener
             this.logger = logger;
             this.speaker = speaker;
             this.listener = listener;
-            this.listener.MessageReceived += Listener_MessageReceived;
+            this.listener.MessageReceived += ListenerMessageReceived;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             listener.StartRead();
-
             return Task.CompletedTask;
         }
 
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
-            listener.MessageReceived -= Listener_MessageReceived;
+            listener.MessageReceived -= ListenerMessageReceived;
             listener.StopRead();
 
             await base.StopAsync(cancellationToken);
         }
 
-        private void Listener_MessageReceived(IUdpTransportMessage context)
+        private void ListenerMessageReceived(IUdpTransportMessage context)
         {
             string response = $"Received from {context.Address}:{context.Port}: {context.Message.Text}";
             logger.LogInformation(response);

@@ -14,8 +14,7 @@ namespace UsingSerilog
         private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
 
-                .UseSerilog((context, config) =>
-                    config.ReadFrom.Configuration(context.Configuration))
+                .UseSerilog((context, config) => config.ReadFrom.Configuration(context.Configuration))
 
                 .ConfigureServices((hostContext, services) =>
                 {

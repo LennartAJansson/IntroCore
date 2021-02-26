@@ -1,3 +1,6 @@
+Design Patterns (Design Patterns: Elements of Reusable Object‑Oriented Software)
+Gemma, Vlissides, Helm & Johnson
+
 ```csharp
 public class Factory<T> : IFactory<T>
 {

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace UsingUserSecrets
 {
-    public class Program
+    public static class Program
     {
         //Add following block to %appdata%\Microsoft\UserSecrets\UsingUserSecrets-3E60BD6A-C1D3-4ED8-8B90-D971C0C669FA\secret.json
         /*
@@ -30,6 +30,10 @@ namespace UsingUserSecrets
                 //    config.AddUserSecrets<Program>(optional: true))
                 .ConfigureServices((hostContext, services) =>
                 {
+                    var connStr = hostContext.Configuration.GetConnectionString("MyConnection");
+                    var db1 = hostContext.Configuration.GetConnectionString("Db1");
+                    var db2 = hostContext.Configuration.GetConnectionString("Db2");
+
                     services.Configure<SampleUserSecret>(options =>
                         hostContext.Configuration.GetSection("SampleUserSecret").Bind(options));
                     services.AddHostedService<Worker>();

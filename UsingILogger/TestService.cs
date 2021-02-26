@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+
+using System.Threading.Tasks;
 
 namespace UsingILogger
 {
-    class TestService : ITestService
+    internal class TestService : ITestService
     {
         private readonly IConfiguration configuration;
         private readonly ILogger<TestService> logger;
@@ -18,9 +18,9 @@ namespace UsingILogger
 
         public Task ExecuteAsync()
         {
-            logger.LogInformation("TestClass.ExecuteAsync...");
-            logger.LogInformation($"  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
-            logger.LogInformation($"  {configuration.GetSection("DevelopmentGroup")["DevelopmentValue"]}");
+            logger.LogTrace("TestClass.ExecuteAsync...");
+            logger.LogTrace($"  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
+            logger.LogTrace($"  {configuration.GetSection("DevelopmentGroup")["DevelopmentValue"]}");
 
             return Task.CompletedTask;
         }

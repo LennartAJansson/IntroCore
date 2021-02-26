@@ -1,8 +1,8 @@
-﻿using System;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+
+using System;
 
 namespace UsingILogger
 {
@@ -18,8 +18,7 @@ namespace UsingILogger
                 .Build();
 
             var spBuilder = new ServiceCollection()
-                .AddLogging(loggingBuilder =>
-                    loggingBuilder.AddConsole())
+                .AddLogging(loggingBuilder => loggingBuilder.AddConsole().AddConfiguration(configuration))
                 .AddScoped<DIUserClass>()
                 .AddScoped<ITestService, TestService>()
                 .AddSingleton<IConfiguration>(configuration);

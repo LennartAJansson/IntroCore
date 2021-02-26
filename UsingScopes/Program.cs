@@ -58,9 +58,9 @@ namespace UsingScopes
                     services.AddScoped<MyThirdService>();
 
                     //TODO! Alter this between AddScoped and AddTransient and observe the difference in how it gets created in this example
-                    services.AddScoped<InjectedService>();
+                    //services.AddScoped<InjectedService>();
 
-                    //services.AddTransient<InjectedService>();
+                    services.AddTransient<InjectedService>();
                 });
     }
 }

@@ -35,7 +35,6 @@ namespace Udp.Core.Service
         public IUdpTransportMessage SendWithResponse(IUdpMessage message, IPAddress address, int port) =>
             SendMessage(message, address, port, true);
 
-
         public void Broadcast(IUdpMessage message, int port) =>
             SendMessage(message, IPAddress.Broadcast, port, false);
 
@@ -76,6 +75,7 @@ namespace Udp.Core.Service
                     if (waitForResponse)
                     {
                         IPEndPoint responseEndPoint = new IPEndPoint(IPAddress.Any, 0);
+
                         //Receive blocks thread until message returns
                         byte[] receivedBytes = client.Receive(ref responseEndPoint);
                         string receivedString = Encoding.UTF8.GetString(receivedBytes);

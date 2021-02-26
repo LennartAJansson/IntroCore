@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace UsingIServiceProvider
 {
-    class TestService : ITestService
+    internal class TestService : ITestService
     {
         private readonly IConfiguration configuration;
 
@@ -22,5 +22,4 @@ namespace UsingIServiceProvider
             return Task.CompletedTask;
         }
     }
-
 }
