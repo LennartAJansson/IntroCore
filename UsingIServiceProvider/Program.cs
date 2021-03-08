@@ -16,11 +16,12 @@ namespace UsingIServiceProvider
                 .AddCommandLine(args)
                 .Build();
 
-            var serviceProvider = new ServiceCollection()
+            var serviceCollection = new ServiceCollection()
                 .AddScoped<IDIUserClass, DIUserClass>()
                 .AddScoped<ITestService, TestService>()
-                .AddSingleton<IConfiguration>(configuration)
-                .BuildServiceProvider();
+                .AddSingleton<IConfiguration>(configuration);
+
+            var serviceProvider = serviceCollection.BuildServiceProvider();
 
             Console.WriteLine("You now have access to a complete IServiceProvider (IOC) through variable serviceProvider");
 

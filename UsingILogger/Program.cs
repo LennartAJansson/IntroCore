@@ -23,7 +23,7 @@ namespace UsingILogger
                 .AddScoped<ITestService, TestService>()
                 .AddSingleton<IConfiguration>(configuration);
 
-            var serviceProvider = spBuilder.BuildServiceProvider();
+            using var serviceProvider = spBuilder.BuildServiceProvider();
 
             Console.WriteLine("You now have access to a complete IServiceProvider (IOC) through variable serviceProvider");
 
@@ -32,10 +32,9 @@ namespace UsingILogger
                 .RunAsync()
                 .GetAwaiter();
 
-            //Needed to let the ILogger flush its content before main thread exits.
-            //It will dispose all object created by the ServiceProvider, ILogger fx
-
-            serviceProvider.Dispose();
+            //Need to dispose the ServiceProvider to let the ILogger flush its content before main thread exits.
+            //But since we are using 'using' it will be handled automatically
+            //Try doing the same without using and the logger will not be able to finish its flush in proper time
         }
     }
 }

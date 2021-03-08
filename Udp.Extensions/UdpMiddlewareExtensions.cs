@@ -10,12 +10,12 @@ namespace Udp.Extensions
 {
     public static class UdpMiddlewareExtensions
     {
-        public static IHostBuilder UseUdpListener(this IHostBuilder hostBuilder, string configGroup)
+        public static IHostBuilder UseUdpListener(this IHostBuilder hostBuilder)
         {
             hostBuilder.ConfigureServices((hostBuilderContext, serviceCollection) =>
             {
                 serviceCollection.Configure<UdpListenerConfig>(options =>
-                    hostBuilderContext.Configuration.GetSection(configGroup).Bind(options));
+                    hostBuilderContext.Configuration.GetSection(UdpListenerConfig.SectionName).Bind(options));
 
                 serviceCollection.AddTransient<IUdpListenerService, UdpListenerService>();
             });
@@ -23,12 +23,12 @@ namespace Udp.Extensions
             return hostBuilder;
         }
 
-        public static IHostBuilder UseUdpSpeaker(this IHostBuilder hostBuilder, string configGroup)
+        public static IHostBuilder UseUdpSpeaker(this IHostBuilder hostBuilder)
         {
             hostBuilder.ConfigureServices((hostBuilderContext, serviceCollection) =>
             {
                 serviceCollection.Configure<UdpSpeakerConfig>(options =>
-                    hostBuilderContext.Configuration.GetSection(configGroup).Bind(options));
+                    hostBuilderContext.Configuration.GetSection(UdpSpeakerConfig.SectionName).Bind(options));
 
                 serviceCollection.AddTransient<IUdpSpeakerService, UdpSpeakerService>();
             });
@@ -36,10 +36,10 @@ namespace Udp.Extensions
             return hostBuilder;
         }
 
-        public static IServiceCollection AddUdpSpeaker(this IServiceCollection serviceCollection, IConfiguration configuration, string configGroup)
+        public static IServiceCollection AddUdpSpeaker(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
             serviceCollection.Configure<UdpSpeakerConfig>(options =>
-                configuration.GetSection(configGroup).Bind(options));
+                configuration.GetSection(UdpSpeakerConfig.SectionName).Bind(options));
 
             serviceCollection.AddTransient<IUdpSpeakerService, UdpSpeakerService>();
 

@@ -5,7 +5,7 @@ using Udp.Extensions;
 
 namespace Udp.Listener
 {
-    static class Program
+    internal static class Program
     {
         private static void Main(string[] args) =>
             CreateHostBuilder(args).Build().Run();
@@ -13,16 +13,10 @@ namespace Udp.Listener
         private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
 
-                .UseUdpSpeaker("SpeakerConfig")
-                .UseUdpListener("ListenerConfig")
+                .UseUdpSpeaker()
+                .UseUdpListener()
 
                 .ConfigureServices((hostContext, services) =>
-                    //{
-                    //  services.AddUdpSpeaker(hostContext.Configuration, (configuration, speakerConfiguration)=> 
-                    //  {
-                    //      hostContext.Configuration.GetSection("SpeakerConfig").Bind(speakerConfiguration);
-                    //  });
-                    //}
                     services.AddHostedService<Worker>());
     }
 }

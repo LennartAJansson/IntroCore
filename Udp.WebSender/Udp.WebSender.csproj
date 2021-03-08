@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Udp.Abstract\Udp.Abstract.csproj" />
-    <ProjectReference Include="..\Udp.Extensions\Udp.Extensions.csproj" />
+    <!--<ProjectReference Include="..\Udp.Abstract\Udp.Abstract.csproj" />-->
+    <PackageReference Include="Udp.Extensions" Version="0.1.0.15" />
+    <!--<ProjectReference Include="..\Udp.Extensions\Udp.Extensions.csproj" />-->
   </ItemGroup>
 </Project>

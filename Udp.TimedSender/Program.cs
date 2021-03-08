@@ -6,7 +6,7 @@ using Udp.TimedSender.Extensions;
 
 namespace Udp.TimedSender
 {
-    static class Program
+    internal static class Program
     {
         private static void Main(string[] args) =>
             CreateHostBuilder(args).Build().Run();
@@ -14,9 +14,9 @@ namespace Udp.TimedSender
         private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
 
-                .UseServiceTimer("TimerSettings")
+                .UseServiceTimer()
 
-                .UseUdpSpeaker("SpeakerConfig")
+                .UseUdpSpeaker()
 
                 .ConfigureServices((hostContext, services) =>
                     services.AddHostedService<Worker>());

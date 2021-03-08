@@ -55,11 +55,11 @@ namespace Udp.Core.Service
             {
                 if (isBroadcast)
                 {
-                    logger.LogInformation($"Broadcasting [{message.Text}] to ip:port {remoteEndPoint.ToString()}");
+                    logger.LogInformation($"Broadcasting [{message.Text}] to ip:port {remoteEndPoint}");
                 }
                 else
                 {
-                    logger.LogInformation($"Sending [{message.Text}] to ip:port {remoteEndPoint.ToString()}");
+                    logger.LogInformation($"Sending [{message.Text}] to ip:port {remoteEndPoint}");
                 }
 
                 string toSend = JsonSerializer.Serialize<UdpMessage>(message as UdpMessage);

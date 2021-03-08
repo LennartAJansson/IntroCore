@@ -20,7 +20,6 @@ namespace Udp.Core.Service
     public class UdpListenerService : IUdpListenerService
     {
         private UdpClient client;
-        private IAsyncResult asyncResult;
         private readonly ILogger<UdpListenerService> logger;
 
         public IUdpListenerConfig ListenerConfig { get; set; }
@@ -50,7 +49,7 @@ namespace Udp.Core.Service
                 endPoint = listeningEndPoint
             };
 
-            asyncResult = client.BeginReceive(new AsyncCallback(ReceiveCallback), state);
+            _ = client.BeginReceive(new AsyncCallback(ReceiveCallback), state);
 
             logger.LogInformation($"Started listening on {ListenerConfig.BroadcastListenerPort} for broadcast and {ListenerConfig.SendListenerPort} for normal traffic");
         }
@@ -84,7 +83,7 @@ namespace Udp.Core.Service
                 finally
                 {
                     //Start receiving again
-                    asyncResult = stateClient.BeginReceive(new AsyncCallback(ReceiveCallback), state);
+                    _ = stateClient.BeginReceive(new AsyncCallback(ReceiveCallback), state);
                 }
             }
             catch (ObjectDisposedException)

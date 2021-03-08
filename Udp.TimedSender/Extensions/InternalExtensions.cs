@@ -6,13 +6,11 @@ namespace Udp.TimedSender.Extensions
 {
     public static class InternalExtensions
     {
-        public static IHostBuilder UseServiceTimer(this IHostBuilder hostBuilder, string configGroup)
+        public static IHostBuilder UseServiceTimer(this IHostBuilder hostBuilder)
         {
             hostBuilder.ConfigureServices((hostBuilderContext, serviceCollection) =>
-            {
                 serviceCollection.Configure<TimerSettings>(options =>
-                    hostBuilderContext.Configuration.GetSection(configGroup).Bind(options));
-            });
+                    hostBuilderContext.Configuration.GetSection(TimerSettings.SectionName).Bind(options)));
 
             return hostBuilder;
         }

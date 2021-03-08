@@ -10,14 +10,17 @@ namespace UsingIConfiguration
         {
             IConfiguration configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables()
+                .AddEnvironmentVariables() //EnvGroup__EnvValue
                 .AddCommandLine(args)
                 .Build();
 
             Console.WriteLine("You now have access to a complete IConfiguration through variable configuration");
-            Console.WriteLine($"  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
-            Console.WriteLine($"  {configuration.GetSection("EnvGroup")["EnvValue"]}");
-            Console.WriteLine($"  {configuration.GetSection("CmdGroup")["CmdValue"]}");
+            Console.WriteLine($"GetSection(\"GlobalGroup\")[\"GlobalValue\"]:  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
+            Console.WriteLine($"[\"GlobalGroup:GlobalValue\"]:  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
+            Console.WriteLine($"GetSection(\"EnvGroup\")[\"EnvValue\"];  {configuration.GetSection("EnvGroup")["EnvValue"]}");
+            Console.WriteLine($"[\"EnvGroup:EnvValue\"];  {configuration.GetSection("EnvGroup")["EnvValue"]}");
+            Console.WriteLine($"GetSection(\"CmdGroup\")[\"CmdValue\"];  {configuration.GetSection("CmdGroup")["CmdValue"]}");
+            Console.WriteLine($"[\"CmdGroup:CmdValue\"];  {configuration.GetSection("CmdGroup")["CmdValue"]}");
         }
     }
 }

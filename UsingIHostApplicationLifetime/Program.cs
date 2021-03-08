@@ -14,7 +14,7 @@ namespace UsingIHostApplicationLifetime
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.Configure<TimerSettings>(options =>
-                        hostContext.Configuration.GetSection("TimerSettings").Bind(options));
+                        hostContext.Configuration.GetSection(TimerSettings.SectionName).Bind(options));
 
                     services.AddHostedService<Worker>();
                 });
