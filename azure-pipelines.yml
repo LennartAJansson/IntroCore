@@ -28,12 +28,12 @@ steps:
     arguments: '--configuration $(buildConfiguration) -p:Version=$(buildVersion)'
 
 #Kör eventuella unittester
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '**/*.UnitTests.csproj'
-    arguments: '--configuration $(buildConfiguration) -p:Version=$(buildVersion)'
-    testRunTitle: 'Unittests $(Build.DefinitionName)_$(buildVersion)'
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: 'test'
+#    projects: '**/*.UnitTests.csproj'
+#    arguments: '--configuration $(buildConfiguration) -p:Version=$(buildVersion)'
+#    testRunTitle: 'Unittests $(Build.DefinitionName)_$(buildVersion)'
 
 #Om bygget innehåller Nuget paket så kopiera dessa till ArtifactStagingDirectory
 - task: CopyFiles@2

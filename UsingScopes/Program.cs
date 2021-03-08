@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using System;
 using System.Threading.Tasks;
 
 namespace UsingScopes
@@ -28,18 +27,11 @@ namespace UsingScopes
                 var services = serviceScope.ServiceProvider;
                 var logger = services.GetRequiredService<ILogger<Program>>();
 
-                try
-                {
-                    //scopedService will only live through this scope
-                    var scopedService = services.GetRequiredService<MyMainService>();
-                    await scopedService.RunAsync();
-                    var secondService = services.GetRequiredService<MyThirdService>();
-                    await secondService.RunAsync();
-                }
-                catch (Exception ex)
-                {
-                    logger.LogError(ex, "An error occurred.");
-                }
+                //scopedService will only live through this scope
+                var scopedService = services.GetRequiredService<MyMainService>();
+                await scopedService.RunAsync();
+                var secondService = services.GetRequiredService<MyThirdService>();
+                await secondService.RunAsync();
             }
 
             //Finally we stop the host and dispose it
