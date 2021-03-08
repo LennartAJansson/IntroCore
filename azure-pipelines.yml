@@ -24,7 +24,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/*.csproj'
+    projects: '**/Udp.Extensions.csproj'
     arguments: '--configuration $(buildConfiguration) -p:Version=$(buildVersion)'
 
 #Kör eventuella unittester
