@@ -4,21 +4,21 @@ using System.Threading.Tasks;
 
 namespace UsingScopes
 {
-    internal class MySecondService
+    internal class MySecondService : MyBaseService
     {
         private readonly ILogger<MySecondService> logger;
-        private readonly InjectedService injectedService;
+        private readonly MyBaseService myFourthService;
 
         //We inject our second InjectedService here
-        public MySecondService(ILogger<MySecondService> logger, InjectedService injectedService)
+        public MySecondService(ILogger<MySecondService> logger, MyBaseService myFourthService)
         {
             this.logger = logger;
-            this.injectedService = injectedService;
+            this.myFourthService = myFourthService;
         }
 
         public Task RunAsync()
         {
-            logger.LogInformation($"In MySecondService, Injected service id: {injectedService.Id}");
+            logger.LogInformation($"In MySecondService, Fourth service id: {myFourthService.Id}");
             return Task.CompletedTask;
         }
     }

@@ -7,22 +7,25 @@ namespace UsingILogger
 {
     internal class DIUserClass
     {
+        private readonly ILogger<DIUserClass> logger;
         private readonly ITestService testService;
         private readonly IConfiguration configuration;
-        private readonly ILogger<DIUserClass> logger;
 
-        public DIUserClass(ITestService testService, IConfiguration configuration, ILogger<DIUserClass> logger)
+        public DIUserClass(ILogger<DIUserClass> logger, ITestService testService, IConfiguration configuration)
         {
+            this.logger = logger;
             this.testService = testService;
             this.configuration = configuration;
-            this.logger = logger;
         }
 
-        public async Task RunAsync()
+        public async Task ExecuteAsync()
         {
             logger.LogTrace("DIUserClass.RunAsync...");
-            logger.LogTrace($"  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
-            logger.LogTrace($"  {configuration.GetSection("DevelopmentGroup")["DevelopmentValue"]}");
+            logger.LogDebug($"  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
+            logger.LogInformation($"  {configuration.GetSection("DevelopmentGroup")["DevelopmentValue"]}");
+            logger.LogWarning($"  {configuration.GetSection("EnvGroup")["EnvValue"]}");
+            logger.LogError($"  {configuration.GetSection("CmdGroup")["CmdValue"]}");
+            logger.LogCritical($"  {configuration.GetSection("CmdGroup")["CmdValue"]}");
 
             await testService.ExecuteAsync();
         }

@@ -19,8 +19,8 @@ namespace UsingConfigInjection
             : base()
         {
             this.logger = logger;
-
             timerSettings = timerOptions.Value;
+
             this.logger.LogInformation("Constructing Service");
         }
 
@@ -56,9 +56,7 @@ namespace UsingConfigInjection
             base.Dispose();
         }
 
-        private void DoWork(object state)
-        {
-            logger.LogInformation($"{DateTimeOffset.Now} - Doing work");
-        }
+        private void DoWork(object state) =>
+            logger.LogInformation("{message}: {time}", timerSettings.Message, DateTimeOffset.Now);
     }
 }

@@ -6,6 +6,6 @@
 
         public int TimerSeconds { get; set; }
 
-        public string Nisse { get; set; }
+        public string Message { get; set; }
     }
 }

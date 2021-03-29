@@ -6,24 +6,41 @@ namespace UsingIHostBuilder
     internal class Program
     {
         //This example doesn't do anything, only for demo purpose of how to create an Hosted application
-        private static void Main(string[] args) =>
+        private static void Main(string[] args)
+        {
             CreateHostBuilder(args)
                 .Build()
                 .GetMyClass()
                 .Run();
+        }
 
-        private static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        //The content of Main could be expressed like this:
+        //IHostBuilder hostBuilder = CreateHostBuilder(args);
+        //IHost host = hostBuilder.Build();
+        //host.GetMyClass();
+        //host.Run();
+
+        private static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureServices(services =>
-                services.AddScoped<MyClass>());
+                {
+                    services.AddScoped<MyClass>();
+                });
+        }
     }
 
+    //If I would like to extend the functionality of an IHost, it could be something like this:
     public static class Extensions
     {
         public static IHost GetMyClass(this IHost host)
         {
-            using var scope = host.Services.CreateScope();
-            scope.ServiceProvider.GetService<MyClass>().Execute();
+            using IServiceScope scope = host.Services.CreateScope();
+
+            scope.ServiceProvider
+                .GetRequiredService<MyClass>()
+                .Execute();
+
             return host;
         }
     }

@@ -2,6 +2,8 @@
 {
     internal class SampleUserSecret
     {
-        public string ConnectionString { get; set; }
+        public const string SectionName = "SampleUserSecret";
+
+        public string MySecret { get; set; }
     }
 }

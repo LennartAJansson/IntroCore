@@ -8,28 +8,39 @@ namespace UsingILogger
 {
     public class Program
     {
+        //Show difference between registrations
+        //Show difference between async/sync main
         private static void Main(string[] args)
         {
-            var configuration = new ConfigurationBuilder()
+            IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .AddCommandLine(args)
                 .Build();
 
-            var spBuilder = new ServiceCollection()
+            IServiceCollection spBuilder = new ServiceCollection()
                 .AddLogging(loggingBuilder => loggingBuilder.AddConsole().AddConfiguration(configuration))
                 .AddScoped<DIUserClass>()
                 .AddScoped<ITestService, TestService>()
-                .AddSingleton<IConfiguration>(configuration);
 
-            using var serviceProvider = spBuilder.BuildServiceProvider();
+                //Using ImplementationFactory method
+                .AddSingleton<IConfiguration>(sp => new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                    .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true)
+                    .AddEnvironmentVariables()
+                    .AddCommandLine(args)
+                    .Build());
+
+            ServiceProvider serviceProvider = spBuilder.BuildServiceProvider();
 
             Console.WriteLine("You now have access to a complete IServiceProvider (IOC) through variable serviceProvider");
 
-            serviceProvider
+            using IServiceScope scope = serviceProvider.CreateScope();
+
+            scope.ServiceProvider
                 .GetService<DIUserClass>()
-                .RunAsync()
+                .ExecuteAsync()
                 .GetAwaiter();
 
             //Need to dispose the ServiceProvider to let the ILogger flush its content before main thread exits.

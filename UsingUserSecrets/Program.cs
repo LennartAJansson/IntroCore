@@ -30,12 +30,18 @@ namespace UsingUserSecrets
                 //    config.AddUserSecrets<Program>(optional: true))
                 .ConfigureServices((hostContext, services) =>
                 {
+                    //You can get the connectionstrings from the section named "ConnectionStrings" either this way:
                     var connStr = hostContext.Configuration.GetConnectionString("MyConnection");
                     var db1 = hostContext.Configuration.GetConnectionString("Db1");
                     var db2 = hostContext.Configuration.GetConnectionString("Db2");
 
-                    services.Configure<SampleUserSecret>(options =>
-                        hostContext.Configuration.GetSection("SampleUserSecret").Bind(options));
+                    //or this way:
+                    services.Configure<SampleUserSecret>(sampleUserSecret =>
+                        hostContext.Configuration.GetSection(SampleUserSecret.SectionName).Bind(sampleUserSecret));
+
+                    services.Configure<ConnectionStrings>(connectionStrings =>
+                        hostContext.Configuration.GetSection(ConnectionStrings.SectionName).Bind(connectionStrings));
+
                     services.AddHostedService<Worker>();
                 });
     }

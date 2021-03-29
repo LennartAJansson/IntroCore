@@ -12,28 +12,29 @@ namespace UsingIHostApplicationLifetime
     {
         private Timer timer;
         private readonly ILogger logger;
-        private readonly IHostApplicationLifetime appLifetime;
+        private readonly IHostApplicationLifetime hostApplicationLifetime;
+        private readonly IHostEnvironment hostEnvironment;
         private readonly TimerSettings timerSettings;
 
         public Worker(ILogger<Worker> logger,
-                        IHostApplicationLifetime appLifetime,
+                        IHostApplicationLifetime hostApplicationLifetime,
+                        IHostEnvironment hostEnvironment,
                         IOptionsMonitor<TimerSettings> timerOptions)
             : base()
         {
             this.logger = logger;
-            this.appLifetime = appLifetime;
-
+            this.hostApplicationLifetime = hostApplicationLifetime;
+            this.hostEnvironment = hostEnvironment;
             timerSettings = timerOptions.CurrentValue;
-            logger.LogInformation("Constructing service");
         }
 
         public override async Task StartAsync(CancellationToken cancellationToken)
         {
             logger.LogInformation("StartAsync");
 
-            appLifetime.ApplicationStarted.Register(OnStarted);
-            appLifetime.ApplicationStopping.Register(OnStopping);
-            appLifetime.ApplicationStopped.Register(OnStopped);
+            hostApplicationLifetime.ApplicationStarted.Register(OnStarted);
+            hostApplicationLifetime.ApplicationStopping.Register(OnStopping);
+            hostApplicationLifetime.ApplicationStopped.Register(OnStopped);
 
             await base.StartAsync(cancellationToken);
         }
@@ -57,13 +58,13 @@ namespace UsingIHostApplicationLifetime
         }
 
         private void OnStarted() =>
-            logger.LogInformation("OnStarted");
+            logger.LogInformation("OnStarted, current environment: {environmentName}", hostEnvironment.EnvironmentName);
 
         private void OnStopping() =>
-            logger.LogInformation("OnStopping");
+            logger.LogInformation("OnStopping, current environment: {environmentName}", hostEnvironment.EnvironmentName);
 
         private void OnStopped() =>
-            logger.LogInformation("OnStopped");
+            logger.LogInformation("OnStopped, current environment: {environmentName}", hostEnvironment.EnvironmentName);
 
         public override void Dispose()
         {
@@ -75,6 +76,6 @@ namespace UsingIHostApplicationLifetime
         }
 
         private void DoWork(object state) =>
-            logger.LogInformation($"{DateTimeOffset.Now} - Doing work");
+            logger.LogInformation("{message}: {time}", timerSettings.Message, DateTimeOffset.Now);
     }
 }

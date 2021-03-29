@@ -3,11 +3,11 @@ using System;
 
 namespace UsingScopes
 {
-    internal class InjectedService
+    internal class MyBaseService
     {
         public Guid Id { get; set; }
 
-        public InjectedService()
+        public MyBaseService()
         {
             Id = Guid.NewGuid();
         }

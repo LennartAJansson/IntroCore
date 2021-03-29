@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace UsingBackgroundService
 {
@@ -14,6 +14,7 @@ namespace UsingBackgroundService
         private readonly ILogger<Worker> logger;
 
         public Worker(ILogger<Worker> logger)
+
             //Normally always call base implementation
             : base()
         {
@@ -57,6 +58,6 @@ namespace UsingBackgroundService
         }
 
         private void DoWork(object state) =>
-            logger.LogInformation("DoWork");
+            logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
     }
 }

@@ -13,8 +13,8 @@ namespace UsingIHostApplicationLifetime
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.Configure<TimerSettings>(options =>
-                        hostContext.Configuration.GetSection(TimerSettings.SectionName).Bind(options));
+                    services.Configure<TimerSettings>(timerSettings =>
+                        hostContext.Configuration.GetSection(TimerSettings.SectionName).Bind(timerSettings));
 
                     services.AddHostedService<Worker>();
                 });
