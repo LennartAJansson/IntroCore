@@ -10,9 +10,6 @@ namespace UsingScopes
     {
         private static IHost host;
 
-        //On line 49, alter the registration of InjectedService between AddScoped and AddTransient and run the application
-        //The output will show if the InjectedService object is recreated between MyMainService and MySecondService or not
-        //MySecondService will run within the scope of MyMainService
         public static async Task Main(string[] args)
         {
             //First we build the host so we can access its ServiceProvider
@@ -32,34 +29,45 @@ namespace UsingScopes
 
         private static async Task PlayAsync()
         {
-            var scope = host.Services.CreateScope();
+            for (int loop = 1; loop < 3; loop++)
+            {
+                using var scope = host.Services.CreateScope();
 
-            var services = scope.ServiceProvider;
-            var logger = services.GetRequiredService<ILogger<Program>>();
+                var services = scope.ServiceProvider;
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                System.Console.WriteLine($"Creating a new scope");
 
-            logger.LogInformation("Playing around a bit");
+                System.Console.WriteLine($"Creating the first instances of our three services, loop {loop}");
+                var mySingleton = services.GetRequiredService<MySingletonService>();
+                await mySingleton.RunAsync();
 
-            //firstService will live through this scope
-            var mySingleton = services.GetRequiredService<MySingleton>();
-            await mySingleton.RunAsync();
+                var myScopedService = services.GetRequiredService<MyScopedService>();
+                await myScopedService.RunAsync();
 
-            //secondService will live through this scope
-            var secondService = services.GetRequiredService<MyThirdService>();
-            await secondService.RunAsync();
+                var myTransientService = services.GetRequiredService<MyTransientService>();
+                await myTransientService.RunAsync();
+
+                System.Console.WriteLine($"Creating the second instances of our three services, loop {loop}");
+                mySingleton = services.GetRequiredService<MySingletonService>();
+                await mySingleton.RunAsync();
+
+                myScopedService = services.GetRequiredService<MyScopedService>();
+                await myScopedService.RunAsync();
+
+                myTransientService = services.GetRequiredService<MyTransientService>();
+                await myTransientService.RunAsync();
+
+                System.Console.WriteLine();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices(services =>
                 {
-                    services.AddSingleton<MySingleton>();
-                    services.AddScoped<MySecondService>();
-                    services.AddScoped<MyThirdService>();
-
-                    //TODO! Alter this between AddScoped and AddTransient and observe the difference in how it gets created in this example
-                    //services.AddScoped<MyFourthService>();
-
-                    services.AddTransient<MyBaseService>();
+                    services.AddSingleton<MySingletonService>();
+                    services.AddScoped<MyScopedService>();
+                    services.AddTransient<MyTransientService>();
                 });
     }
 }

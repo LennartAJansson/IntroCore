@@ -85,6 +85,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.TimedSender", "Udp.Time
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Udp.WebSender", "Udp.WebSender\Udp.WebSender.csproj", "{A447CB91-78DC-4F54-BB7B-47244E8F23A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingIHostedService.Tests", "UsingIHostedService.Tests\UsingIHostedService.Tests.csproj", "{EF1F91B7-FB91-4A30-B44C-ADD4AF029091}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +169,10 @@ Global
 		{A447CB91-78DC-4F54-BB7B-47244E8F23A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A447CB91-78DC-4F54-BB7B-47244E8F23A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A447CB91-78DC-4F54-BB7B-47244E8F23A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1F91B7-FB91-4A30-B44C-ADD4AF029091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1F91B7-FB91-4A30-B44C-ADD4AF029091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1F91B7-FB91-4A30-B44C-ADD4AF029091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1F91B7-FB91-4A30-B44C-ADD4AF029091}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace UsingIHostedService
 {
     //Because we use a timer in the example we add IDisposable so we can Dispose of it afterwards
-    internal class Worker : IHostedService, IDisposable
+    public class Worker : IHostedService, IDisposable
     {
         private readonly ILogger<Worker> logger;
-
+        private Status status = new Status();
         private Timer timer;
 
         public Worker(ILogger<Worker> logger) => this.logger = logger;
@@ -21,7 +21,10 @@ namespace UsingIHostedService
             logger.LogInformation("StartAsync");
 
             //Register a timer that will call the method DoWork every fifth second
-            timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+
+            status.CurrentStatus = "running";
+
+            timer = new Timer(DoWork, status, TimeSpan.Zero, TimeSpan.FromSeconds(5));
 
             return Task.CompletedTask;
         }
@@ -44,7 +47,18 @@ namespace UsingIHostedService
         }
 
         //Using DateTimeOffset instead of DateTime to get UTC time
-        private void DoWork(object state) =>
-            logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+        public void DoWork(object state)
+        {
+            string s = $"CurrentStatus is {(state as Status).CurrentStatus}";
+            if (state != null && state is Status)
+                logger.LogInformation("Worker running {status} at: {time}", (state as Status).CurrentStatus, DateTimeOffset.Now);
+            else
+                logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+        }
+    }
+
+    internal class Status
+    {
+        public string CurrentStatus { get; set; }
     }
 }

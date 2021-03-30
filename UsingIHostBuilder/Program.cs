@@ -10,7 +10,9 @@ namespace UsingIHostBuilder
         {
             CreateHostBuilder(args)
                 .Build()
-                .GetMyClass()
+
+                .RunMyClass()
+
                 .Run();
         }
 
@@ -23,17 +25,14 @@ namespace UsingIHostBuilder
         private static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
-                .ConfigureServices(services =>
-                {
-                    services.AddScoped<MyClass>();
-                });
+                .ConfigureServices(services => services.AddScoped<MyClass>());
         }
     }
 
     //If I would like to extend the functionality of an IHost, it could be something like this:
     public static class Extensions
     {
-        public static IHost GetMyClass(this IHost host)
+        public static IHost RunMyClass(this IHost host)
         {
             using IServiceScope scope = host.Services.CreateScope();
 

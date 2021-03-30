@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace UsingScopes
 {
-    internal class MyTransientService : MyBaseService
+    internal class MyScopedService : MyBaseService
     {
-        private readonly ILogger<MyTransientService> logger;
+        private readonly ILogger<MyScopedService> logger;
 
-        public MyTransientService(ILogger<MyTransientService> logger)
+        public MyScopedService(ILogger<MyScopedService> logger)
             : base()
         {
             this.logger = logger;
@@ -16,7 +16,7 @@ namespace UsingScopes
 
         public override Task RunAsync()
         {
-            System.Console.WriteLine($"In {nameof(MyTransientService)}, instance {Id}");
+            System.Console.WriteLine($"In {nameof(MyScopedService)}, instance {Id}");
             return Task.CompletedTask;
         }
     }

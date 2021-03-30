@@ -1,9 +1,9 @@
-﻿
-using System;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace UsingScopes
 {
-    internal class MyBaseService
+    public abstract class MyBaseService
     {
         public Guid Id { get; set; }
 
@@ -11,5 +11,7 @@ namespace UsingScopes
         {
             Id = Guid.NewGuid();
         }
+
+        public abstract Task RunAsync();
     }
 }

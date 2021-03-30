@@ -34,7 +34,9 @@ namespace UsingIServiceProvider
             using IServiceScope scope = serviceProvider.CreateScope();
 
             scope.ServiceProvider
-                .GetService<DIUserClass>()
+
+                //Mention GetService
+                .GetRequiredService<DIUserClass>()
                 .ExecuteAsync()
                 .GetAwaiter();
         }

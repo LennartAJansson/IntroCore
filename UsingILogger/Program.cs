@@ -39,7 +39,7 @@ namespace UsingILogger
             using IServiceScope scope = serviceProvider.CreateScope();
 
             scope.ServiceProvider
-                .GetService<DIUserClass>()
+                .GetRequiredService<DIUserClass>()
                 .ExecuteAsync()
                 .GetAwaiter();
 
