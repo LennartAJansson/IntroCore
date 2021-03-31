@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 using System.Threading.Tasks;
 
@@ -34,7 +33,6 @@ namespace UsingScopes
                 using var scope = host.Services.CreateScope();
 
                 var services = scope.ServiceProvider;
-                var logger = services.GetRequiredService<ILogger<Program>>();
                 System.Console.WriteLine($"Creating a new scope");
 
                 System.Console.WriteLine($"Creating the first instances of our three services, loop {loop}");
@@ -56,7 +54,6 @@ namespace UsingScopes
 
                 myTransientService = services.GetRequiredService<MyTransientService>();
                 await myTransientService.RunAsync();
-
                 System.Console.WriteLine();
             }
         }

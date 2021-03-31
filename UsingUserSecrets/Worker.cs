@@ -28,6 +28,7 @@ namespace UsingUserSecrets
         {
             while (!stoppingToken.IsCancellationRequested)
             {
+                //TODO Don't use interpolated strings in logging
                 logger.LogInformation($"Worker running at: {DateTimeOffset.Now}, MySecret is: {mySecret}");
                 await Task.Delay(1000, stoppingToken);
             }

@@ -9,7 +9,6 @@ namespace UsingScopes
         private readonly ILogger<MySingletonService> logger;
 
         public MySingletonService(ILogger<MySingletonService> logger)
-            : base()
         {
             this.logger = logger;
         }

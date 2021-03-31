@@ -5,12 +5,7 @@ namespace UsingScopes
 {
     public abstract class MyBaseService
     {
-        public Guid Id { get; set; }
-
-        public MyBaseService()
-        {
-            Id = Guid.NewGuid();
-        }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public abstract Task RunAsync();
     }

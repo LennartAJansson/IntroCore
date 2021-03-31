@@ -11,7 +11,7 @@ namespace UsingIHostedService
     public class Worker : IHostedService, IDisposable
     {
         private readonly ILogger<Worker> logger;
-        private Status status = new Status();
+        private readonly Status status = new Status();
         private Timer timer;
 
         public Worker(ILogger<Worker> logger) => this.logger = logger;

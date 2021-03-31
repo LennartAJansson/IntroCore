@@ -9,7 +9,6 @@ namespace UsingScopes
         private readonly ILogger<MyScopedService> logger;
 
         public MyScopedService(ILogger<MyScopedService> logger)
-            : base()
         {
             this.logger = logger;
         }

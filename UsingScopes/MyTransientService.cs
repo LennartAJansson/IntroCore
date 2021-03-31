@@ -9,7 +9,6 @@ namespace UsingScopes
         private readonly ILogger<MyTransientService> logger;
 
         public MyTransientService(ILogger<MyTransientService> logger)
-            : base()
         {
             this.logger = logger;
         }
