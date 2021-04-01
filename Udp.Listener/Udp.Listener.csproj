@@ -7,10 +7,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-    <PackageReference Include="Udp.Extensions" Version="0.1.0.18" />
+    <!--<PackageReference Include="Udp.Extensions" Version="0.1.0.18" />-->
   </ItemGroup>
 
-  <!--<ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Udp.Extensions\Udp.Extensions.csproj" />
-  </ItemGroup>-->
+  </ItemGroup>
 </Project>

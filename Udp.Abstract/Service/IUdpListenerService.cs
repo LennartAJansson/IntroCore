@@ -5,7 +5,7 @@ namespace Udp.Abstract.Service
 {
     public interface IUdpListenerService
     {
-        IUdpListenerConfig ListenerConfig { get; set; }
+        IUdpConfig ListenerConfig { get; set; }
         void StartRead();
         void StopRead();
 

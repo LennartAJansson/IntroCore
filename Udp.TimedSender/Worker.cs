@@ -19,12 +19,12 @@ namespace Udp.TimedSender
         private readonly IUdpSpeakerService speaker;
         private readonly TimerSettings timerSettings;
 
-        public Worker(ILogger<Worker> logger, IUdpSpeakerService speaker, IOptionsMonitor<TimerSettings> options)
+        public Worker(ILogger<Worker> logger, IUdpSpeakerService speaker, IOptions<TimerSettings> options)
             : base()
         {
             this.logger = logger;
             this.speaker = speaker;
-            this.timerSettings = options.CurrentValue;
+            this.timerSettings = options.Value;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -51,11 +51,11 @@ namespace Udp.TimedSender
         private void DoWork(object state)
         {
             string messageText = $"Sending from Udp.TimedSender at {DateTimeOffset.Now}";
-            logger.LogInformation($"Broadcasting message [{messageText}] to port {speaker.SpeakerConfig.BroadcastTargetPort}");
+            logger.LogInformation($"Broadcasting message [{messageText}] to port {speaker.SpeakerConfig.BroadcastPort}");
 
             IUdpMessage message = UdpMessageFactory.CreateUdpMessage(messageText);
 
-            IUdpTransportMessage response = speaker.BroadcastWithResponse(message, speaker.SpeakerConfig.BroadcastTargetPort);
+            IUdpTransportMessage response = speaker.BroadcastWithResponse(message, speaker.SpeakerConfig.BroadcastPort);
 
             logger.LogInformation($"Received response from {response.Address}:{response.Port}: [{response.Message.Text}]");
         }

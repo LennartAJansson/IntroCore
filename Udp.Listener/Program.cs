@@ -12,11 +12,10 @@ namespace Udp.Listener
 
         private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-
-                .UseUdpSpeaker()
-                .UseUdpListener()
-
                 .ConfigureServices((hostContext, services) =>
-                    services.AddHostedService<Worker>());
+                    services
+                        .AddUdpSpeaker(hostContext.Configuration.GetSection("UdpSpeakerConfig"))
+                        .AddUdpListener(hostContext.Configuration.GetSection("UdpListenerConfig"))
+                        .AddHostedService<Worker>());
     }
 }

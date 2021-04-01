@@ -34,11 +34,11 @@ namespace Udp.WebSender.Pages
 
         public IActionResult OnPost()
         {
-            logger.LogInformation($"Broadcasting message [{Message}] to port {speaker.SpeakerConfig.BroadcastTargetPort}");
+            logger.LogInformation($"Broadcasting message [{Message}] to port {speaker.SpeakerConfig.BroadcastPort}");
 
             IUdpMessage message = UdpMessageFactory.CreateUdpMessage(Message);
 
-            IUdpTransportMessage response = speaker.BroadcastWithResponse(message, speaker.SpeakerConfig.BroadcastTargetPort);
+            IUdpTransportMessage response = speaker.BroadcastWithResponse(message, speaker.SpeakerConfig.BroadcastPort);
 
             Status = $"Received response from {response.Address}:{response.Port}: [{response.Message.Text}]";
 

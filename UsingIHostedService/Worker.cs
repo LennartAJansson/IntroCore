@@ -10,9 +10,10 @@ namespace UsingIHostedService
     //Because we use a timer in the example we add IDisposable so we can Dispose of it afterwards
     public class Worker : IHostedService, IDisposable
     {
-        private readonly ILogger<Worker> logger;
-        private readonly Status status = new Status();
+        private bool isDisposed;
         private Timer timer;
+
+        private readonly ILogger<Worker> logger;
 
         public Worker(ILogger<Worker> logger) => this.logger = logger;
 
@@ -22,9 +23,7 @@ namespace UsingIHostedService
 
             //Register a timer that will call the method DoWork every fifth second
 
-            status.CurrentStatus = "running";
-
-            timer = new Timer(DoWork, status, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+            timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
 
             return Task.CompletedTask;
         }
@@ -41,24 +40,30 @@ namespace UsingIHostedService
 
         public void Dispose()
         {
-            logger.LogInformation("Dispose");
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-            timer?.Dispose();
+        protected virtual void Dispose(bool disposing)
+        {
+            if (isDisposed) return;
+
+            if (disposing)
+            {
+                logger.LogInformation("Dispose");
+
+                // free managed resources
+                timer?.Dispose();
+            }
+
+            // free native resources if there are any.
+            isDisposed = true;
         }
 
         //Using DateTimeOffset instead of DateTime to get UTC time
         public void DoWork(object state)
         {
-            string s = $"CurrentStatus is {(state as Status).CurrentStatus}";
-            if (state != null && state is Status)
-                logger.LogInformation("Worker running {status} at: {time}", (state as Status).CurrentStatus, DateTimeOffset.Now);
-            else
-                logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
         }
-    }
-
-    internal class Status
-    {
-        public string CurrentStatus { get; set; }
     }
 }

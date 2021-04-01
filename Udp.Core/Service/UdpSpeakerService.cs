@@ -20,13 +20,13 @@ namespace Udp.Core.Service
     {
         private readonly ILogger<UdpSpeakerService> logger;
 
-        public IUdpSpeakerConfig SpeakerConfig { get; set; }
+        public IUdpConfig SpeakerConfig { get; set; }
 
-        public UdpSpeakerService(ILogger<UdpSpeakerService> logger, IOptionsMonitor<UdpSpeakerConfig> options)
+        public UdpSpeakerService(ILogger<UdpSpeakerService> logger, IOptions<UdpConfig> options)
         {
             this.logger = logger;
-            SpeakerConfig = options.CurrentValue;
-            logger.LogInformation($"Speaker: Speaking on {SpeakerConfig.SendTargetPort}, Broadcasting on {SpeakerConfig.BroadcastTargetPort}");
+            SpeakerConfig = options.Value;
+            logger.LogInformation($"Speaker: Speaking on {SpeakerConfig.SendPort}, Broadcasting on {SpeakerConfig.BroadcastPort}");
         }
 
         public void Send(IUdpMessage message, IPAddress address, int port) =>
@@ -48,10 +48,10 @@ namespace Udp.Core.Service
             if (message == null)
                 return udpResponse;
 
-            IPEndPoint remoteEndPoint = new IPEndPoint(targetAddress, targetPort);
+            IPEndPoint remoteEndPoint = new(targetAddress, targetPort);
             bool isBroadcast = targetAddress == IPAddress.Broadcast;
 
-            using (UdpClient client = new UdpClient(AddressFamily.InterNetwork))
+            using (UdpClient client = new(AddressFamily.InterNetwork))
             {
                 if (isBroadcast)
                 {
@@ -74,7 +74,7 @@ namespace Udp.Core.Service
 
                     if (waitForResponse)
                     {
-                        IPEndPoint responseEndPoint = new IPEndPoint(IPAddress.Any, 0);
+                        IPEndPoint responseEndPoint = new(IPAddress.Any, 0);
 
                         //Receive blocks thread until message returns
                         byte[] receivedBytes = client.Receive(ref responseEndPoint);

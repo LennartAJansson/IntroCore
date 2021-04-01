@@ -13,12 +13,10 @@ namespace Udp.TimedSender
 
         private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-
                 .UseServiceTimer()
-
-                .UseUdpSpeaker()
-
                 .ConfigureServices((hostContext, services) =>
-                    services.AddHostedService<Worker>());
+                    services
+                        .AddUdpSpeaker(hostContext.Configuration.GetSection("UdpSpeakerConfig"))
+                        .AddHostedService<Worker>());
     }
 }

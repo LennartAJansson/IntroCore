@@ -20,7 +20,7 @@ namespace Udp.WebSender
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddUdpSpeaker(configuration);
+            services.AddUdpSpeaker(configuration.GetSection("UdpSpeakerConfig"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

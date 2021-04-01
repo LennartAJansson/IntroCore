@@ -13,14 +13,14 @@ namespace UsingUserSecrets
         private readonly ILogger<Worker> logger;
 
         //Could either store the whole object or only the string:
-        private readonly SampleUserSecret sampleUserSecret;
-
+        //private readonly SampleUserSecret sampleUserSecret;
         private readonly string mySecret;
 
         public Worker(ILogger<Worker> logger, IOptions<SampleUserSecret> options)
         {
             this.logger = logger;
-            sampleUserSecret = options.Value;
+
+            //sampleUserSecret = options.Value;
             mySecret = options.Value.MySecret;
         }
 

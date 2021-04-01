@@ -22,19 +22,19 @@ namespace Udp.Core.Service
         private UdpClient client;
         private readonly ILogger<UdpListenerService> logger;
 
-        public IUdpListenerConfig ListenerConfig { get; set; }
+        public IUdpConfig ListenerConfig { get; set; }
 
         public event UdpMessageReceivedEventHandler MessageReceived;
 
-        public UdpListenerService(ILogger<UdpListenerService> logger, IOptionsMonitor<UdpListenerConfig> options)
+        public UdpListenerService(ILogger<UdpListenerService> logger, IOptions<UdpConfig> options)
         {
             this.logger = logger;
-            ListenerConfig = options.CurrentValue;
+            ListenerConfig = options.Value;
         }
 
         public void StartRead()
         {
-            IPEndPoint listeningEndPoint = new IPEndPoint(IPAddress.Any, ListenerConfig.BroadcastListenerPort);
+            IPEndPoint listeningEndPoint = new(IPAddress.Any, ListenerConfig.BroadcastPort);
 
             logger.LogInformation($"Opening connection.");
 
@@ -43,7 +43,7 @@ namespace Udp.Core.Service
                 EnableBroadcast = true
             };
 
-            UdpState state = new UdpState
+            UdpState state = new()
             {
                 client = client,
                 endPoint = listeningEndPoint
@@ -51,7 +51,7 @@ namespace Udp.Core.Service
 
             _ = client.BeginReceive(new AsyncCallback(ReceiveCallback), state);
 
-            logger.LogInformation($"Started listening on {ListenerConfig.BroadcastListenerPort} for broadcast and {ListenerConfig.SendListenerPort} for normal traffic");
+            logger.LogInformation($"Started listening on {ListenerConfig.BroadcastPort} for broadcast and {ListenerConfig.SendPort} for normal traffic");
         }
 
         //ReceiveCallback will be called asynchronously
@@ -63,7 +63,7 @@ namespace Udp.Core.Service
 
             try
             {
-                IPEndPoint receiveEndPoint = new IPEndPoint(IPAddress.Any, ListenerConfig.BroadcastListenerPort);
+                IPEndPoint receiveEndPoint = new(IPAddress.Any, ListenerConfig.BroadcastPort);
                 byte[] receivedBytes = stateClient.EndReceive(ar, ref receiveEndPoint);
                 try
                 {
@@ -97,7 +97,7 @@ namespace Udp.Core.Service
         public void StopRead()
         {
             client.Close();
-            logger.LogInformation($"Stopped listening on {ListenerConfig.BroadcastListenerPort} for broadcast and {ListenerConfig.SendListenerPort} for normal traffic");
+            logger.LogInformation($"Stopped listening on {ListenerConfig.BroadcastPort} for broadcast and {ListenerConfig.SendPort} for normal traffic");
         }
     }
 }
