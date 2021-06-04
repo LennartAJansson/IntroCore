@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Yaml;
 using Microsoft.Extensions.DependencyInjection;
 
 using System;
@@ -14,8 +15,9 @@ namespace UsingIServiceProvider
             string envKind = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
 
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true) //GlobalGroup:GlobalValue
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true) //JsonGroup:JsonValue
                 .AddJsonFile($"appsettings.{envKind}.json", optional: true, reloadOnChange: true) //DevelopmentGroup:DevelopmentValue
+                .AddYamlFile("appsettings.yml", optional: false) //YamlGroup:YamlValue
                 .AddEnvironmentVariables() //EnvGroup__EnvValue
                 .AddCommandLine(args) //CmdGroup:CmdValue
                 .Build();

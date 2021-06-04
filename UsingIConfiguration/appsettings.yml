@@ -1,0 +1,7 @@
+﻿yamlgroup: 
+  yamlvalue: "This is a yaml value"
+
+# - generates an array with elements 0=seq1, 1=seq2
+  mapping2b:
+  - seq1
+  - seq2

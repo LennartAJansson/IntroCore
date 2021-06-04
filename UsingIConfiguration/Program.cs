@@ -12,9 +12,9 @@ namespace UsingIConfiguration
             string envKind = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
 
             IConfiguration configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true) //GlobalGroup:GlobalValue
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true) //JsonGroup:JsonValue
                 .AddJsonFile($"appsettings.{envKind}.json", optional: true, reloadOnChange: true) //DevelopmentGroup:DevelopmentValue
-                .AddYamlFile("test.yml", optional: false)
+                .AddYamlFile("appsettings.yml", optional: false) //YamlGroup:YamlValue
                 .AddEnvironmentVariables() //EnvGroup__EnvValue
                 .AddCommandLine(args) //CmdGroup:CmdValue
                 .Build();
@@ -23,12 +23,16 @@ namespace UsingIConfiguration
 
             Console.WriteLine(configuration["Test"]);
 
-            Console.WriteLine($"GetSection(\"GlobalGroup\")[\"GlobalValue\"]:  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
-            Console.WriteLine($"[\"GlobalGroup:GlobalValue\"]:  {configuration["GlobalGroup:GlobalValue"]}");
+            Console.WriteLine($"GetSection(\"JsonGroup\")[\"JsonValue\"]:  {configuration.GetSection("JsonGroup")["JsonValue"]}");
+            Console.WriteLine($"[\"JsonGroup:JsonValue\"]:  {configuration["JsonGroup:JsonValue"]}");
             Console.WriteLine();
 
             Console.WriteLine($"GetSection(\"DevelopmentGroup\")[\"DevelopmentValue\"]:  {configuration.GetSection("DevelopmentGroup")["DevelopmentValue"]}");
             Console.WriteLine($"[\"DevelopmentGroup:DevelopmentValue\"]:  {configuration["DevelopmentGroup:DevelopmentValue"]}");
+            Console.WriteLine();
+
+            Console.WriteLine($"GetSection(\"YamlGroup\")[\"YamlValue\"]:  {configuration.GetSection("YamlGroup")["YamlValue"]}");
+            Console.WriteLine($"[\"YamlGroup:YamlValue\"]:  {configuration["YamlGroup:YamlValue"]}");
             Console.WriteLine();
 
             Console.WriteLine($"GetSection(\"EnvGroup\")[\"EnvValue\"];  {configuration.GetSection("EnvGroup")["EnvValue"]}");
