@@ -13,7 +13,7 @@ namespace Microsoft.Extensions.Configuration.Yaml
 
         public override void Load(Stream stream)
         {
-            YamlConfigurationFileParser parser = new();
+            YamlConfigurationFileParser parser = new YamlConfigurationFileParser();
             try
             {
                 Data = parser.Parse(stream);

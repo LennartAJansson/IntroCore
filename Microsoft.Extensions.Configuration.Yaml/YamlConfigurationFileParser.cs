@@ -11,7 +11,7 @@ namespace Microsoft.Extensions.Configuration.Yaml
     internal class YamlConfigurationFileParser
     {
         private readonly IDictionary<string, string> _data = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        private readonly Stack<string> _context = new();
+        private readonly Stack<string> _context = new Stack<string>();
         private string _currentPath;
 
         public IDictionary<string, string> Parse(Stream input)
@@ -19,7 +19,7 @@ namespace Microsoft.Extensions.Configuration.Yaml
             _data.Clear();
             _context.Clear();
 
-            YamlStream yaml = new();
+            YamlStream yaml = new YamlStream();
             yaml.Load(new StreamReader(input, detectEncodingFromByteOrderMarks: true));
 
             if (yaml.Documents.Any())

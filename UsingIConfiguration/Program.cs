@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Yaml;
 
 using System;
 
@@ -13,11 +14,14 @@ namespace UsingIConfiguration
             IConfiguration configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true) //GlobalGroup:GlobalValue
                 .AddJsonFile($"appsettings.{envKind}.json", optional: true, reloadOnChange: true) //DevelopmentGroup:DevelopmentValue
+                .AddYamlFile("test.yml", optional: false)
                 .AddEnvironmentVariables() //EnvGroup__EnvValue
                 .AddCommandLine(args) //CmdGroup:CmdValue
                 .Build();
 
             Console.WriteLine("You now have access to a complete IConfiguration through variable configuration");
+
+            Console.WriteLine(configuration["Test"]);
 
             Console.WriteLine($"GetSection(\"GlobalGroup\")[\"GlobalValue\"]:  {configuration.GetSection("GlobalGroup")["GlobalValue"]}");
             Console.WriteLine($"[\"GlobalGroup:GlobalValue\"]:  {configuration["GlobalGroup:GlobalValue"]}");
